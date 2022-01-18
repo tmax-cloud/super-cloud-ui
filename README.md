@@ -1,5 +1,13 @@
 # super-cloud-ui project
 
+storybook project
+
+## setting
+### react
+yarn create react-app super-cloud-ui --template typescript
+### storybook
+npx sb init --type react
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
