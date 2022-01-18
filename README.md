@@ -2,7 +2,7 @@
 
 storybook project
 
-## setting
+## Setting
 
 ### react
 
@@ -11,6 +11,10 @@ storybook project
 ### storybook
 
 `npx sb init --type react`
+
+## Run
+
+`yarn storybook`
 
 # Getting Started with Create React App
 
