@@ -3,10 +3,14 @@
 storybook project
 
 ## setting
+
 ### react
-yarn create react-app super-cloud-ui --template typescript
+
+`yarn create react-app super-cloud-ui --template typescript`
+
 ### storybook
-npx sb init --type react
+
+`npx sb init --type react`
 
 # Getting Started with Create React App
 
