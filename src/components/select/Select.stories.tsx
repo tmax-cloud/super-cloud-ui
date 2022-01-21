@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import SimpleSelect from './Select';
+import { SimpleSelect } from './Select';
 
 export default {
   title: 'Component/Select/SimpleSelect',

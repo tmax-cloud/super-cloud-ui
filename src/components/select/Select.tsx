@@ -6,7 +6,7 @@ import FormControl from "@mui/material/FormControl";
 import FormHelperText from '@mui/material/FormHelperText';
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 
-const SimpleSelect: React.FC<SelectProps> = ({
+export const SimpleSelect: React.FC<SelectProps> = ({
   label = 'Title',
   items = [{key: 'Key', value: 'Value'}],
   defaultValue = '',
@@ -80,45 +80,8 @@ type SelectProps = {
    */
   disabled?: boolean;
   error?: boolean;
-  rquired?: boolean;
+  required?: boolean;
   width?: number;
   fullWidth?: boolean;
   autoWidth?: boolean;
-
-  name?: string;
-  className?: string;
-  required?: boolean;
-  buttonClassName?: string;
-  itemClassName?: string;
-
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
 };
-
-export type DropdownProps = {
-  id?: string;
-  name: string;
-  className?: string;
-  style?: any;
-  dropDownClassName?: string;
-  ariaLabel?: string;
-  headerBefore?: { [key: string]: string };
-  items: object;
-  menuClassName?: string;
-  itemClassName?: string;
-  buttonClassName?: string;
-  spacerBefore?: Set<string>;
-  textFilter?: string;
-  title?: React.ReactNode;
-  titlePrefix?: React.ReactNode;
-  defaultValue?: string;
-  describedBy?: string;
-  active?: boolean;
-  required?: boolean;
-  disabled?: boolean;
-  methods?: any;
-};
-
-export default SimpleSelect;
