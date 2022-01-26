@@ -16,12 +16,22 @@ export enum DialogSize {
   medium = 'medium',
   large = 'large',
 }
+
+export enum ContentsType {
+  string = 'string',
+  textInput = 'textInput',
+  toggleButton = 'toggleButton',
+  numberSpinner = 'numberSpinner',
+  listView = 'listView',
+}
 interface BasicDialogProps {
   isOpen: boolean;
   title: string;
   subTitle: string;
   saveButtonText: string;
   cancelButtonText: string;
+  numberOfContents: number;
+  typeOfContentList: ContentsType[];
   onClose?: () => void;
   size?: DialogSize;
 }
@@ -48,13 +58,30 @@ const dialogSize = {
 };
 
 export default function BasicDialog(props: BasicDialogProps) {
-  const { isOpen, title, subTitle, saveButtonText, cancelButtonText, onClose, size } = props;
+  const { isOpen, title, subTitle, saveButtonText, cancelButtonText, onClose, size, typeOfContentList } = props;
 
   const [open, setOpen] = React.useState(isOpen);
 
   React.useEffect(() => {
     isOpen ? setOpen(true) : setOpen(false);
   }, [isOpen]);
+
+  const contentList = ((typeOfContentList: ContentsType[]) => {
+    const result: JSX.Element[] = [];
+    typeOfContentList.forEach((contentType: ContentsType) => {
+      switch (contentType) {
+        case 'string': {
+          result.push(<DialogContentText>contents summary blah blah</DialogContentText>);
+          break;
+        }
+        case 'textInput': {
+          result.push(<TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" />);
+          break;
+        }
+      }
+    });
+    return result;
+  })(typeOfContentList);
 
   return (
     <div>
@@ -63,7 +90,8 @@ export default function BasicDialog(props: BasicDialogProps) {
         <DialogContent>
           <DialogContentText>{subTitle}</DialogContentText>
           {/** you can customize this area*/}
-          <TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" />
+          {/* <TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" /> */}
+          {!!contentList.length && contentList.map((cur) => cur)}
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} variant="outlined">
