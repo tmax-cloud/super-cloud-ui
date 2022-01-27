@@ -1,11 +1,10 @@
 import * as React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import TooltipLinkButton from './TooltipLinkButton';
+import { TooltipLinkButton } from './TooltipLinkButton';
 
 export default {
   title: 'Component/Button/TooltipLinkButton',
   component: TooltipLinkButton,
-  argTypes: {},
 } as ComponentMeta<typeof TooltipLinkButton>;
 
 const Template: ComponentStory<typeof TooltipLinkButton> = (args) => <TooltipLinkButton {...args} />;
