@@ -4,34 +4,25 @@ import { css } from '@emotion/react';
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 
 export enum DialogSize {
   small = 'small',
   medium = 'medium',
   large = 'large',
 }
-
-export enum ContentsType {
-  string = 'string',
-  textInput = 'textInput',
-  toggleButton = 'toggleButton',
-  numberSpinner = 'numberSpinner',
-  listView = 'listView',
-}
-interface BasicDialogProps {
+interface DeleteResourceDialogProps {
   isOpen: boolean;
   title: string;
-  subTitle: string;
   saveButtonText: string;
   cancelButtonText: string;
-  numberOfContents: number;
-  typeOfContentList: ContentsType[];
+  resourceName: string;
+  namespaceName?: string;
   onClose?: () => void;
   size?: DialogSize;
 }
@@ -57,47 +48,38 @@ const dialogSize = {
   `,
 };
 
-export default function BasicDialog(props: BasicDialogProps) {
-  const { isOpen, title, subTitle, saveButtonText, cancelButtonText, onClose, size, typeOfContentList } = props;
+export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
+  const { isOpen, title, resourceName, namespaceName, saveButtonText, cancelButtonText, onClose, size } = props;
 
   const [open, setOpen] = React.useState(isOpen);
+
+  const deleteResourceMsg = (resourceName: string, namespaceName?: string) => {
+    if (!!namespaceName) {
+      return `Are you sure you want to delete ${resourceName} in namespace ${namespaceName}?`;
+    } else {
+      return `Are you sure you want to delete ${resourceName}?`;
+    }
+  };
 
   React.useEffect(() => {
     isOpen ? setOpen(true) : setOpen(false);
   }, [isOpen]);
 
-  const contentList = ((typeOfContentList: ContentsType[]) => {
-    const result: JSX.Element[] = [];
-    typeOfContentList.forEach((contentType: ContentsType) => {
-      switch (contentType) {
-        case 'string': {
-          result.push(<DialogContentText>contents summary blah blah</DialogContentText>);
-          break;
-        }
-        case 'textInput': {
-          result.push(<TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" />);
-          break;
-        }
-      }
-    });
-    return result;
-  })(typeOfContentList);
-
   return (
     <div>
       <Dialog css={dialogSize[size as DialogSize]} open={open} onClose={onClose}>
-        <DialogTitle>{title}</DialogTitle>
+        <DialogTitle>
+          <ReportProblemIcon color="warning" fontSize="large" />
+          {title}
+        </DialogTitle>
         <DialogContent>
-          <DialogContentText>{subTitle}</DialogContentText>
-          {/** you can customize this area*/}
-          {/* <TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" /> */}
-          {!!contentList.length && contentList.map((cur) => cur)}
+          <DialogContentText>{deleteResourceMsg(resourceName, namespaceName)}</DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} variant="outlined">
             {cancelButtonText}
           </Button>
-          <Button onClick={onClose} variant="contained">
+          <Button onClick={onClose} variant="contained" color="error">
             {saveButtonText}
           </Button>
         </DialogActions>
