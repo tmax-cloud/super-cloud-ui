@@ -50,7 +50,7 @@ interface LinkButtonProps {
   href?: string;
 }
 
-type TooltipLinkButtonProps = LinkButtonProps & {
+export type TooltipLinkButtonProps = LinkButtonProps & {
   /**
    * 	Tooltip title. Zero-length titles string are never displayed
    */
@@ -60,5 +60,3 @@ type TooltipLinkButtonProps = LinkButtonProps & {
 TooltipLinkButton.defaultProps = {
   disabled: false,
 };
-
-export default TooltipLinkButton;
