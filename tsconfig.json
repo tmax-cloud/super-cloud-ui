@@ -1,11 +1,12 @@
 {
   "compilerOptions": {
+    // "baseUrl": ".",
+    // "paths": {
+    //   "test-utils": ["test-utils"]
+    // }, // [TODO] yarn test시에는 test-utils를 못 찾아서 일단 주석처리 해놈
+
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -20,7 +21,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src", "test-utils.jsx"],
+  "exclude": ["node_modules"]
 }
