@@ -38,11 +38,11 @@ export const Colors = () => {
     <Stack direction="column" alignItems="stretch" spacing={2}>
       <Container>
         <Item title="Global" colors={colors.global} />
-        <Item title="Chart" colors={colors.chart} />
+        <Item />
       </Container>
       <Container>
         <Item title="Button" colors={colors.button} />
-        <Item />
+        <Item title="Chart" colors={colors.chart} />
       </Container>
     </Stack>
   );

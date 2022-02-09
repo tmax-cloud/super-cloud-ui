@@ -7,19 +7,19 @@ declare module '@mui/material/styles/createPalette' {
       bgDark100: string;
       danger100: string;
     };
-    chart: {
-      blue100: string;
-      blue300: string;
-      green400: string;
-      black400: string;
-      black500: string;
-    };
     button: {
       primaryBg: string;
       primaryHoverBg: string;
       disabled: string;
       disabledBg: string;
       dangerBg: string;
+    };
+    chart: {
+      blue100: string;
+      blue300: string;
+      green400: string;
+      black400: string;
+      black500: string;
     };
   }
   interface PaletteOptions {
@@ -28,19 +28,19 @@ declare module '@mui/material/styles/createPalette' {
       bgDark100: string;
       danger100: string;
     };
-    chart: {
-      blue100: string;
-      blue300: string;
-      green400: string;
-      black400: string;
-      black500: string;
-    };
     button: {
       primaryBg: string;
       primaryHoverBg: string;
       disabled: string;
       disabledBg: string;
       dangerBg: string;
+    };
+    chart: {
+      blue100: string;
+      blue300: string;
+      green400: string;
+      black400: string;
+      black500: string;
     };
   }
 }
