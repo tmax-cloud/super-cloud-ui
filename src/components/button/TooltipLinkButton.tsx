@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { styled } from '@mui/material/styles';
-import { Button, Tooltip } from '@mui/material';
+import { Button, styled, Tooltip } from '@mui/material';
+import ThemeWrapper from '../../themes/ThemeWrapper';
 
-const ColorButton = styled(Button)(() => ({
-  backgroundColor: '#06c',
+const ColorButton = styled(Button)(({ theme }) => ({
+  backgroundColor: theme.palette.button.primaryBg,
   '&:hover': {
-    backgroundColor: '#004080',
+    backgroundColor: theme.palette.button.primaryHoverBg,
   },
   '&.Mui-disabled': {
-    color: '#737679',
-    backgroundColor: '#d2d2d2',
+    color: theme.palette.button.disabled,
+    backgroundColor: theme.palette.button.disabledBg,
     cursor: 'no-drop',
   },
 }));
@@ -26,12 +26,16 @@ const LinkButton = (props: LinkButtonProps) => {
 export const TooltipLinkButton = (props: TooltipLinkButtonProps) => {
   const { tooltipText, ...rest } = props;
   const button = <LinkButton {...rest} />;
-  return tooltipText ? (
-    <Tooltip title={tooltipText} placement="top" arrow>
-      <span>{button}</span>
-    </Tooltip>
-  ) : (
-    button
+  return (
+    <ThemeWrapper>
+      {tooltipText ? (
+        <Tooltip title={tooltipText} placement="top" arrow>
+          <span>{button}</span>
+        </Tooltip>
+      ) : (
+        button
+      )}
+    </ThemeWrapper>
   );
 };
 
