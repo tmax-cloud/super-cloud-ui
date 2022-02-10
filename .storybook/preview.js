@@ -16,6 +16,7 @@ export const parameters = {
     inlineStories: false,
   },
   options: {
+    showPanel: true,
     storySort: {
       order: [['Introduction'], 'Theme', 'Component', 'Template', 'Page'],
     },
