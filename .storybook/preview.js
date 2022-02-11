@@ -2,6 +2,10 @@ import React from 'react';
 import { ThemeProvider } from 'emotion-theming';
 import { theme } from '../src/themes';
 import ThemeWrapper from '../src/themes/ThemeWrapper';
+import { initialize, mswDecorator } from 'msw-storybook-addon';
+
+// Initialize MSW
+initialize();
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -26,4 +30,5 @@ export const decorators = [
       </ThemeWrapper>
     </ThemeProvider>
   ),
+  mswDecorator,
 ];
