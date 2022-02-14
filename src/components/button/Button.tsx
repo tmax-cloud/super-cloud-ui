@@ -1,37 +1,56 @@
-import React from 'react';
-import './button.css';
+import * as React from 'react';
+import { Button as MuiButton, styled, SxProps, Theme } from '@mui/material';
+import { CommonProps } from '@mui/material/OverridableComponent';
+import ThemeWrapper from '../../themes/ThemeWrapper';
 
-interface ButtonProps {
+const StyledButton = styled(MuiButton)(({ theme }) => ({
+  textTransform: 'none',
+  backgroundColor: theme.palette.button.primaryBg,
+  '&:hover': {
+    backgroundColor: theme.palette.button.primaryHoverBg,
+  },
+  '&.Mui-disabled': {
+    color: theme.palette.button.disabled,
+    backgroundColor: theme.palette.button.disabledBg,
+    cursor: 'no-drop',
+    pointerEvents: 'auto',
+  },
+}));
+
+export const Button = (props: ButtonProps) => {
+  const { children, ...rest } = props;
+  return (
+    <ThemeWrapper>
+      <StyledButton variant="contained" {...rest}>
+        {children}
+      </StyledButton>
+    </ThemeWrapper>
+  );
+};
+
+interface BaseProps {
   /**
-   * Is this the principal call to action on the page?
+   * The content of the component.
    */
-  primary?: boolean;
+  children?: React.ReactNode;
   /**
-   * What background color to use
+   * If `true`, the component is disabled.
+   * @default false
    */
-  backgroundColor?: string;
+  disabled?: boolean;
   /**
-   * How large should the button be?
+   * The URL to link to when the button is clicked.
+   * If defined, an `a` element will be used as the root node.
    */
-  size?: 'small' | 'medium' | 'large';
+  href?: string;
   /**
-   * Button contents
+   * The system prop that allows defining system overrides as well as additional CSS styles.
    */
-  label: string;
-  /**
-   * Optional click handler
-   */
-  onClick?: () => void;
+  sx?: SxProps<Theme>;
 }
 
-/**
- * Primary UI component for user interaction
- */
-export const Button = ({ primary = false, size = 'medium', backgroundColor, label, ...props }: ButtonProps) => {
-  const mode = primary ? 'storybook-button--primary' : 'storybook-button--secondary';
-  return (
-    <button type="button" className={['storybook-button', `storybook-button--${size}`, mode].join(' ')} style={{ backgroundColor }} {...props}>
-      {label}
-    </button>
-  );
+export type ButtonProps = BaseProps & CommonProps & React.DOMAttributes<HTMLButtonElement>;
+
+Button.defaultProps = {
+  disabled: false,
 };
