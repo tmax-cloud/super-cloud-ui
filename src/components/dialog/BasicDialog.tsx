@@ -68,14 +68,14 @@ export default function BasicDialog(props: BasicDialogProps) {
 
   const contentList = ((typeOfContentList: ContentsType[]) => {
     const result: JSX.Element[] = [];
-    typeOfContentList.forEach((contentType: ContentsType) => {
+    typeOfContentList.forEach((contentType: ContentsType, idx: number) => {
       switch (contentType) {
         case 'string': {
-          result.push(<DialogContentText>contents summary blah blah</DialogContentText>);
+          result.push(<DialogContentText key={`string-content-${idx}`}>contents summary blah blah</DialogContentText>);
           break;
         }
         case 'textInput': {
-          result.push(<TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" />);
+          result.push(<TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" key={`string-content-${idx}`} />);
           break;
         }
       }
