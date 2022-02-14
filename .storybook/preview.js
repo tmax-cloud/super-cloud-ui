@@ -24,6 +24,12 @@ export const parameters = {
   docs: {
     inlineStories: false,
   },
+  options: {
+    showPanel: true,
+    storySort: {
+      order: [['Introduction'], 'Theme', 'Component', 'Template', 'Page'],
+    },
+  },
 };
 
 // 커스텀 테마 적용을 위한 ThemeProvider 추가 (storybook 한정)
