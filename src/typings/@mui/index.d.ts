@@ -64,11 +64,11 @@ declare module '@mui/material/styles/createTypography' {
   type Variant = 'global' | 'tooltip';
 
   interface Typography {
-    global: TypographyStyle & FontStyleOptions;
+    global: TypographyStyle & GlobalFontStyle;
     tooltip: TypographyStyle;
   }
   interface TypographyOptions {
-    global?: TypographyStyleOptions & FontStyleOptions;
+    global?: TypographyStyleOptions & GlobalFontStyle;
     tooltip?: TypographyStyleOptions;
   }
 }
