@@ -8,7 +8,7 @@ const StyledTooltip = styled(({ className, ...props }: MuiTooltipProps) => <MuiT
   },
   [`& .${tooltipClasses.tooltip}`]: {
     backgroundColor: theme.palette.tooltip.contentBg,
-    padding: '1rem 1.5rem 1rem 1.5rem',
+    padding: `${theme.spaces.tooltip.contentPaddingTop} ${theme.spaces.tooltip.contentPaddingRight} ${theme.spaces.tooltip.contentPaddingBottom} ${theme.spaces.tooltip.contentPaddingLeft}`,
     fontSize: theme.typography.tooltip.fontSize,
     borderRadius: 0,
     top: -15,

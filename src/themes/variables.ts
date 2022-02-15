@@ -41,3 +41,22 @@ export const typography = {
     fontSize: '0.875rem',
   },
 };
+
+export const spaces = {
+  global: {
+    spacerXs: '0.25rem',
+    spacerSm: '0.5rem',
+    spacerMd: '1rem',
+    spacerLg: '1.5rem',
+    spacerXl: '2rem',
+    spacer2xl: '3rem',
+    spacer3xl: '4rem',
+    spacer4xl: '5rem',
+  },
+  tooltip: {
+    contentPaddingTop: '1rem',
+    contentPaddingRight: '1.5rem',
+    contentPaddingBottom: '1rem',
+    contentPaddingLeft: '1.5rem',
+  },
+};

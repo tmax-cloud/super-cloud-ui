@@ -1,5 +1,12 @@
 import '@material-ui/core/styles';
 
+declare module '@mui/material/styles' {
+  interface ExtendedTheme {
+    spaces: Space;
+  }
+  interface Theme extends ExtendedTheme {}
+  interface ThemeOptions extends ExtendedTheme {}
+}
 declare module '@mui/material/styles/createPalette' {
   interface Palette {
     global: {
@@ -75,4 +82,23 @@ export interface GlobalFontStyle {
   fontSize2xl: number | string;
   fontSize3xl: number | string;
   fontSize4xl: number | string;
+}
+
+export interface Space {
+  global: {
+    spacerXs: string;
+    spacerSm: string;
+    spacerMd: string;
+    spacerLg: string;
+    spacerXl: string;
+    spacer2xl: string;
+    spacer3xl: string;
+    spacer4xl: string;
+  };
+  tooltip: {
+    contentPaddingTop: string;
+    contentPaddingRight: string;
+    contentPaddingBottom: string;
+    contentPaddingLeft: string;
+  };
 }
