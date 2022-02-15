@@ -21,6 +21,10 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    tooltip: {
+      content: string;
+      contentBg: string;
+    };
   }
   interface PaletteOptions {
     global: {
@@ -42,5 +46,33 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    tooltip: {
+      content: string;
+      contentBg: string;
+    };
   }
+}
+
+declare module '@mui/material/styles/createTypography' {
+  type Variant = 'global' | 'tooltip';
+
+  interface Typography {
+    global: TypographyStyle & FontStyleOptions;
+    tooltip: TypographyStyle;
+  }
+  interface TypographyOptions {
+    global?: TypographyStyleOptions & FontStyleOptions;
+    tooltip?: TypographyStyleOptions;
+  }
+}
+
+export interface GlobalFontStyle {
+  fontSizeXs: number | string;
+  fontSizeSm: number | string;
+  fontSizeMd: number | string;
+  fontSizeLg: number | string;
+  fontSizeXl: number | string;
+  fontSize2xl: number | string;
+  fontSize3xl: number | string;
+  fontSize4xl: number | string;
 }

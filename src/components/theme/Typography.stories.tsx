@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ComponentMeta } from '@storybook/react';
-import { Colors as ThemeColors } from './Colors';
+import { Typography as ThemeTypography } from './Typography';
 
 export default {
-  title: 'Theme/Colors',
-  component: ThemeColors,
+  title: 'Theme/Typography',
+  component: ThemeTypography,
   parameters: {
     options: {
       showPanel: false,
@@ -15,8 +15,8 @@ export default {
       },
     },
   },
-} as ComponentMeta<typeof ThemeColors>;
+} as ComponentMeta<typeof ThemeTypography>;
 
-export const Colors = () => {
-  return <ThemeColors />;
+export const Typography = () => {
+  return <ThemeTypography />;
 };
