@@ -51,7 +51,7 @@ function makeTableBody(data: any, tableItems: TableItemProps[], errorMsg: string
 }
 
 export default function Table(props: TableProps) {
-  const { tableItems = tableSampleItems, kindObj = ServiceModel } = props;
+  const { tableItems, kindObj } = props;
   const [isLoaded, setLoaded] = React.useState(false);
   const [data, setData] = React.useState<any>();
   const [errorMsg, setErrorMsg] = React.useState<string>('');
@@ -86,19 +86,13 @@ export default function Table(props: TableProps) {
   );
 }
 
-interface TableItemProps {
+export interface TableItemProps {
   name: string;
   displayTitle: string;
   className: string;
   ref?: string; // 키 이름이 뭔가 맘에 안듬... 좋은 게 생각안남..
 }
-interface TableProps {
-  tableItems: TableItemProps[];
+export interface TableProps {
+  tableItems: TableItemProps[]; // 하하
   kindObj: K8sModelType;
-}
-
-interface MakeTableType {
-  tableItems: TableItemProps[];
-  data: any;
-  errorMsg: string;
 }
