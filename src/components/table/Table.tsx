@@ -60,11 +60,8 @@ export default function Table(props: TableProps) {
     fetch(getProperUrl(model))
       .then((response) => response.json())
       .then((data) => {
-        if (!data.items.length) {
-          throw new Error('해당 리소스를 찾을 수 없습니다.');
-        }
-        setData({ items: [] }); // 테스트 중!!!!!!!!!@#%^&&&&
-        // setData(_.defaultsDeep(data));
+        // setData({ items: [] }); // 빈 배열 테스트
+        setData(_.defaultsDeep(data));
         setLoaded(true);
       })
       .catch((e) => {

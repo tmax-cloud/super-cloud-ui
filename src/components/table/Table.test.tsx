@@ -22,10 +22,11 @@ describe('<Table /> snapshot test', () => {
 
 test('when fetching product datas, face an error', async () => {
   server.use(
-    rest.get('http://localhost:6006/api/kubernetes/api/v1/services', (req, res, ctx) => {
+    rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
       return res.once(ctx.status(200), ctx.json({ items: [] }));
     }),
   );
+
   render(
     <Table
       tableItems={[
