@@ -5,11 +5,6 @@ import { K8sModelType, ServiceModel } from '../../models/index';
 import StatusBox from './StatusBox';
 import { fixedTableItem } from './fixedTableItem';
 
-const tableSampleItems: TableItemProps[] = [
-  { name: 'name', displayTitle: 'Name', className: '' },
-  { name: 'namespace', displayTitle: 'Namespace', className: '' },
-];
-
 function getProperUrl(model: K8sModelType) {
   const { apiVersion, plural } = model;
   return `/api/kubernetes/api/${apiVersion}/${plural}`;
@@ -85,6 +80,13 @@ export default function Table(props: TableProps) {
     </>
   );
 }
+
+Table.defaultProps = {
+  tableItems: [
+    { name: 'name', displayTitle: 'Name', className: '' },
+    { name: 'namespace', displayTitle: 'Namespace', className: '' },
+  ],
+};
 
 export interface TableItemProps {
   name: string;
