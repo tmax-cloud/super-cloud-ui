@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'lodash-es';
-import { Table as MuiTable, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
-import { K8sModelType, ServiceModel } from '../../models/index';
+import { Table as MuiTable, TableHead as MuiTableHead, TableBody as MuiTableBody, TableCell, TableRow } from '@mui/material';
+import { K8sModelType } from '../../models/index';
 import StatusBox from './StatusBox';
 import { fixedTableItem } from './fixedTableItem';
 
@@ -10,31 +10,37 @@ function getProperUrl(model: K8sModelType) {
   return `/api/kubernetes/api/${apiVersion}/${plural}`;
 }
 
-function makeTableHead(tableItems: TableItemProps[]) {
+function TableHead(props: TableHeadProps) {
+  const { tableItems } = props;
   return (
-    <TableRow>
-      {tableItems.map((item: TableItemProps) => (
-        <TableCell key={item.name} className={item.className}>
-          {item.displayTitle}
-        </TableCell>
-      ))}
-    </TableRow>
+    <MuiTableHead>
+      <TableRow>
+        {tableItems.map((item: TableItemProps) => (
+          <TableCell key={item.name} className={item.className}>
+            {item.displayTitle}
+          </TableCell>
+        ))}
+      </TableRow>
+    </MuiTableHead>
   );
 }
 
-function makeTableBody(data: any, tableItems: TableItemProps[], errorMsg: string) {
-  if (errorMsg || !data.items.length) {
+function TableBody(props: TableBodyProps) {
+  const { items, tableItems, errorMsg } = props;
+  if (errorMsg || !items.length) {
     return (
-      <TableRow key="error-row">
-        <TableCell align="center" colSpan={2}>
-          <StatusBox message={errorMsg} />
-        </TableCell>
-      </TableRow>
+      <MuiTableBody>
+        <TableRow key="error-row">
+          <TableCell align="center" colSpan={2}>
+            <StatusBox message={errorMsg} />
+          </TableCell>
+        </TableRow>
+      </MuiTableBody>
     );
   }
   return (
     <>
-      {data.items.map((item: any) => (
+      {items.map((item: any) => (
         <TableRow key={item.metadata.uid}>
           {tableItems.map((currentColumnItem: TableItemProps, idx: number) => (
             <TableCell key={currentColumnItem.name}>{_.get(item, (fixedTableItem as any)[currentColumnItem.name] || currentColumnItem.ref)}</TableCell>
@@ -73,8 +79,8 @@ export default function Table(props: TableProps) {
     <>
       {isLoaded && (
         <MuiTable aria-label="simple table">
-          <TableHead>{makeTableHead(tableItems)}</TableHead>
-          <TableBody>{makeTableBody(data, tableItems, errorMsg)}</TableBody>
+          <TableHead tableItems={tableItems} />
+          <TableBody items={data.items} tableItems={tableItems} errorMsg={errorMsg} />
         </MuiTable>
       )}
     </>
@@ -88,13 +94,23 @@ Table.defaultProps = {
   ],
 };
 
-export interface TableItemProps {
+export interface TableProps {
+  tableItems: TableItemProps[]; // 하하
+  kindObj: K8sModelType;
+}
+interface TableItemProps {
   name: string;
   displayTitle: string;
   className: string;
   ref?: string; // 키 이름이 뭔가 맘에 안듬... 좋은 게 생각안남..
 }
-export interface TableProps {
-  tableItems: TableItemProps[]; // 하하
-  kindObj: K8sModelType;
+
+interface TableBodyProps {
+  tableItems: TableItemProps[];
+  items: any;
+  errorMsg: string;
+}
+
+interface TableHeadProps {
+  tableItems: TableItemProps[];
 }
