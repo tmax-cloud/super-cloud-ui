@@ -5,7 +5,7 @@ import { server } from '../../mocks/server';
 import Table from './Table';
 import { ServiceModel } from '../../models/index';
 
-describe('<Table /> snapshot test', () => {
+describe('<Table /> 스냅샷 테스트', () => {
   test('table render', () => {
     const { container } = render(
       <Table
@@ -20,7 +20,7 @@ describe('<Table /> snapshot test', () => {
   });
 });
 
-test('when fetching product datas, face an error', async () => {
+test('빈 배열 왔을 때 `해당 리소스를 찾을 수 없습니다.` 잘 뜨는지 테스트', async () => {
   server.use(
     rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
       return res.once(ctx.status(200), ctx.json({ items: [] }));

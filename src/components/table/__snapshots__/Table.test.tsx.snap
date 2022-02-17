@@ -2,6 +2,8 @@
 
 exports[`<Table /> snapshot test table render 1`] = `<div />`;
 
+exports[`<Table /> 스냅샷 테스트 table render 1`] = `<div />`;
+
 exports[`Table Test table render 1`] = `
 <div>
   <table
