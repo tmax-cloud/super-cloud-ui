@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'lodash-es';
 import { Table as MuiTable, TableBody, TableCell, TableHead, TableRow } from '@mui/material';
 import { K8sModelType, ServiceModel } from '../../models/index';
-import ErrorBanner from './TableError';
+import StatusBox from './StatusBox';
 import { fixedTableItem } from './fixedTableItem';
 
 const tableSampleItems: TableItemProps[] = [
@@ -12,41 +12,40 @@ const tableSampleItems: TableItemProps[] = [
 
 function getProperUrl(model: K8sModelType) {
   const { apiVersion, plural } = model;
-  return `/api/kubernetes/api/${apiVersion}/${plural}?limit=250`;
+  return `/api/kubernetes/api/${apiVersion}/${plural}`;
 }
 
-function makeTable({ tableItems, data, errorMsg }: MakeTableType) {
-  console.log((fixedTableItem as any)['name']);
+function makeTableHead(tableItems: TableItemProps[]) {
+  return (
+    <TableRow>
+      {tableItems.map((item: TableItemProps) => (
+        <TableCell key={item.name} className={item.className}>
+          {item.displayTitle}
+        </TableCell>
+      ))}
+    </TableRow>
+  );
+}
+
+function makeTableBody(data: any, tableItems: TableItemProps[], errorMsg: string) {
+  if (errorMsg || !data.items.length) {
+    return (
+      <TableRow key="error-row">
+        <TableCell align="center" colSpan={2}>
+          <StatusBox message={errorMsg} />
+        </TableCell>
+      </TableRow>
+    );
+  }
   return (
     <>
-      <TableHead>
-        <TableRow>
-          {tableItems.map((item: TableItemProps) => (
-            <TableCell key={item.name} className={item.className}>
-              {item.displayTitle}
-            </TableCell>
+      {data.items.map((item: any) => (
+        <TableRow key={item.metadata.uid}>
+          {tableItems.map((currentColumnItem: TableItemProps, idx: number) => (
+            <TableCell key={currentColumnItem.name}>{_.get(item, (fixedTableItem as any)[currentColumnItem.name] || currentColumnItem.ref)}</TableCell>
           ))}
         </TableRow>
-      </TableHead>
-      {errorMsg ? (
-        <TableBody>
-          <TableRow key="error-row">
-            <TableCell align="center" colSpan={2}>
-              <ErrorBanner message={errorMsg} />
-            </TableCell>
-          </TableRow>
-        </TableBody>
-      ) : (
-        <TableBody>
-          {data.items.map((item: any) => (
-            <TableRow key={item.metadata.uid}>
-              {tableItems.map((currentColumnItem: TableItemProps, idx: number) => (
-                <TableCell key={currentColumnItem.name}>{_.get(item, (fixedTableItem as any)[currentColumnItem.name] || currentColumnItem.ref)}</TableCell>
-              ))}
-            </TableRow>
-          ))}
-        </TableBody>
-      )}
+      ))}
     </>
   );
 }
@@ -62,9 +61,10 @@ export default function Table(props: TableProps) {
       .then((response) => response.json())
       .then((data) => {
         if (!data.items.length) {
-          throw new Error('Empty items');
+          throw new Error('해당 리소스를 찾을 수 없습니다.');
         }
-        setData(_.defaultsDeep(data));
+        setData({ items: [] }); // 테스트 중!!!!!!!!!@#%^&&&&
+        // setData(_.defaultsDeep(data));
         setLoaded(true);
       })
       .catch((e) => {
@@ -77,7 +77,16 @@ export default function Table(props: TableProps) {
     getData(kindObj);
   }, []);
 
-  return <>{isLoaded && <MuiTable aria-label="simple table">{makeTable({ tableItems, data, errorMsg })}</MuiTable>}</>;
+  return (
+    <>
+      {isLoaded && (
+        <MuiTable aria-label="simple table">
+          <TableHead>{makeTableHead(tableItems)}</TableHead>
+          <TableBody>{makeTableBody(data, tableItems, errorMsg)}</TableBody>
+        </MuiTable>
+      )}
+    </>
+  );
 }
 
 interface TableItemProps {
