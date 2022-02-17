@@ -86,6 +86,7 @@ export default function Table(props: TableProps) {
     </>
   );
 }
+export default Table;
 
 Table.defaultProps = {
   tableItems: [
