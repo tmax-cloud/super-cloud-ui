@@ -19,4 +19,4 @@ const Template: ComponentStory<typeof Table> = (args) => (
   />
 );
 
-export const SimpleTable = Template.bind({});
+export const Basic = Template.bind({});
