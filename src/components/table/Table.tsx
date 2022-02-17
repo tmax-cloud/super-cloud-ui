@@ -51,7 +51,7 @@ function TableBody(props: TableBodyProps) {
   );
 }
 
-export default function Table(props: TableProps) {
+export function Table(props: TableProps) {
   const { tableItems, kindObj } = props;
   const [isLoaded, setLoaded] = React.useState(false);
   const [data, setData] = React.useState<any>();
