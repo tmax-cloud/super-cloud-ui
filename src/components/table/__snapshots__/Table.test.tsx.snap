@@ -1,0 +1,32 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Table /> snapshot test table render 1`] = `<div />`;
+
+exports[`<Table /> 스냅샷 테스트 table render 1`] = `<div />`;
+
+exports[`Table Test table render 1`] = `
+<div>
+  <table
+    aria-label="simple table"
+    class="MuiTable-root css-rqglhn-MuiTable-root"
+  >
+    <thead
+      class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+    >
+      <th
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+        scope="col"
+      >
+        Dessert (100g serving)
+      </th>
+    </thead>
+    <tbody
+      class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+    >
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
+      />
+    </tbody>
+  </table>
+</div>
+`;
