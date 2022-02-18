@@ -1,6 +1,6 @@
-import { K8sModelType } from '../models';
+import { K8sKind, RequestType } from '../types';
 
-export function getProperUrl(model: K8sModelType, requestType: RequestType) {
+export function getProperUrl(model: K8sKind, requestType: RequestType) {
   const { apiVersion, plural } = model;
 
   switch (requestType) {
@@ -11,10 +11,4 @@ export function getProperUrl(model: K8sModelType, requestType: RequestType) {
       throw Error('url을 찾을 수 없습니다.');
     }
   }
-}
-
-export enum RequestType {
-  LIST = 'list',
-  CREATE = 'create',
-  DETAIL = 'detail',
 }

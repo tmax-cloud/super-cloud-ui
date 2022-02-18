@@ -1,14 +1,14 @@
 import * as React from 'react';
 import * as _ from 'lodash-es';
-import { getProperUrl, RequestType } from './utils';
-import { K8sModelType } from '../models';
+import { getProperUrl } from './utils';
+import { K8sKind, RequestType } from '../types';
 
-function useRequest(kindObj: K8sModelType, requestType: RequestType) {
+function useRequest(kindObj: K8sKind, requestType: RequestType) {
   const [isLoaded, setLoaded] = React.useState(false);
   const [data, setData] = React.useState<any>();
   const [errorMsg, setErrorMsg] = React.useState<string>('');
 
-  const getData = (model: K8sModelType) => {
+  const getData = (model: K8sKind) => {
     const url = getProperUrl(model, requestType);
 
     fetch(url)
