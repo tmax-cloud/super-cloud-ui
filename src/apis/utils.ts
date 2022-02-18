@@ -5,7 +5,7 @@ export function getProperUrl(model: K8sModelType, requestType: RequestType) {
 
   switch (requestType) {
     case 'list': {
-      return `/api/kubernetes/api/${apiVersion}/${plural}`;
+      return `/api/kubernetes/api/${apiVersion}/${plural}/`;
     }
     default: {
       throw Error('url을 찾을 수 없습니다.');

@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get('http://localhost:6006/api/kubernetes/api/v1/services', (req, res, ctx) => {
+  rest.get('http://localhost:6006/api/kubernetes/api/v1/services/', (req, res, ctx) => {
     return res(
       ctx.json({
         kind: 'ServiceList',
