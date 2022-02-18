@@ -17,7 +17,7 @@ const StyledButton = styled(MuiButton)(({ theme }) => ({
   },
 }));
 
-export const Button = (props: ButtonProps) => {
+const Button = (props: ButtonProps) => {
   const { children, ...rest } = props;
   return (
     <ThemeWrapper>
@@ -28,7 +28,9 @@ export const Button = (props: ButtonProps) => {
   );
 };
 
-interface BaseProps {
+export default Button;
+
+export interface BaseProps {
   /**
    * The content of the component.
    */

@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip tooltip renders correctly 1`] = `
+<div>
+  <span
+    aria-label="Tooltip Label"
+    class=""
+    data-mui-internal-clone-element="true"
+  >
+    <div>
+      Hover me
+    </div>
+  </span>
+</div>
+`;

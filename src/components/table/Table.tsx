@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Table as MuiTable } from '@mui/material';
-import { K8sModelType } from '../../models/index';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import useRequest from '../../apis/useRequest';
-import { RequestType } from '../../apis/utils';
+import { K8sKind, RequestType } from '../../types';
 
 function Table(props: TableProps) {
   const { tableItems, kindObj } = props;
@@ -30,7 +29,7 @@ Table.defaultProps = {
 
 export interface TableProps {
   tableItems: TableItemProps[]; // 하하
-  kindObj: K8sModelType;
+  kindObj: K8sKind;
 }
 export interface TableItemProps {
   name: string;
