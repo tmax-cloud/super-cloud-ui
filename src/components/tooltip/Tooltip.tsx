@@ -16,7 +16,7 @@ const StyledTooltip = styled(({ className, ...props }: MuiTooltipProps) => <MuiT
   },
 }));
 
-export const Tooltip = (props: TooltipProps) => {
+const Tooltip = (props: TooltipProps) => {
   const { children, open, title, ...rest } = props;
   return (
     <ThemeWrapper>
@@ -26,6 +26,8 @@ export const Tooltip = (props: TooltipProps) => {
     </ThemeWrapper>
   );
 };
+
+export default Tooltip;
 
 export interface BaseProps {
   /**
