@@ -20,4 +20,43 @@ export const colors = {
     black400: '#8a8d90',
     black500: '#737679',
   },
+  tooltip: {
+    content: '#fff',
+    contentBg: '#151515',
+  },
+};
+
+export const typography = {
+  global: {
+    fontSizeXs: '0.75rem',
+    fontSizeSm: '0.875rem',
+    fontSizeMd: '1rem',
+    fontSizeLg: '1.125rem',
+    fontSizeXl: '1.25rem',
+    fontSize2xl: '1.5rem',
+    fontSize3xl: '1.75rem',
+    fontSize4xl: '2.25rem',
+  },
+  tooltip: {
+    fontSize: '0.875rem',
+  },
+};
+
+export const spaces = {
+  global: {
+    spacerXs: '0.25rem',
+    spacerSm: '0.5rem',
+    spacerMd: '1rem',
+    spacerLg: '1.5rem',
+    spacerXl: '2rem',
+    spacer2xl: '3rem',
+    spacer3xl: '4rem',
+    spacer4xl: '5rem',
+  },
+  tooltip: {
+    contentPaddingTop: '1rem',
+    contentPaddingRight: '1.5rem',
+    contentPaddingBottom: '1rem',
+    contentPaddingLeft: '1.5rem',
+  },
 };

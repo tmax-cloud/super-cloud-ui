@@ -27,7 +27,7 @@ export const parameters = {
   options: {
     showPanel: true,
     storySort: {
-      order: [['Introduction'], 'Theme', 'Component', 'Template', 'Page'],
+      order: ['Overview', 'Theme', 'Component', 'Template', 'Page'],
     },
   },
 };
