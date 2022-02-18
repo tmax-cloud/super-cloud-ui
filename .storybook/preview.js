@@ -7,10 +7,10 @@ import { initialize, mswDecorator } from 'msw-storybook-addon';
 // Initialize MSW
 initialize();
 
-if (process.env.NODE_ENV === 'development') {
-  const { worker } = require('../src/mocks/browser');
-  worker.start();
-}
+// if (process.env.NODE_ENV === 'development') {
+const { worker } = require('../src/mocks/browser');
+worker.start();
+// }
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
