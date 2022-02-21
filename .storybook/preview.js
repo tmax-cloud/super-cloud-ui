@@ -9,7 +9,11 @@ initialize();
 
 // if (process.env.NODE_ENV === 'development') {
 const { worker } = require('../src/mocks/browser');
-worker.start();
+worker.start({
+  serviceWorker: {
+    url: location.href.includes('github.io') ? '/super-cloud-ui/mockServiceWorker.js' : '/mockServiceWorker.js',
+  },
+});
 // }
 
 export const parameters = {
@@ -32,8 +36,9 @@ export const parameters = {
   },
 };
 
-// 커스텀 테마 적용을 위한 ThemeProvider 추가 (storybook 한정)
 export const decorators = [
+  mswDecorator,
+  // 커스텀 테마 적용을 위한 ThemeProvider 추가 (storybook 한정)
   (Story) => (
     <ThemeProvider theme={theme}>
       <ThemeWrapper>
@@ -41,5 +46,4 @@ export const decorators = [
       </ThemeWrapper>
     </ThemeProvider>
   ),
-  mswDecorator,
 ];
