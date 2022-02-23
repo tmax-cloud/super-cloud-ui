@@ -10,6 +10,7 @@ declare module '@mui/material/styles' {
 declare module '@mui/material/styles/createPalette' {
   interface Palette {
     global: {
+      color100: string;
       bg100: string;
       bgDark100: string;
       danger100: string;
@@ -31,10 +32,23 @@ declare module '@mui/material/styles/createPalette' {
     tooltip: {
       content: string;
       contentBg: string;
+    };
+    textfield: {
+      background: string;
+      border: string;
+      borderBottom: string;
+      placeholder: string;
+      hoverBorderBottom: string;
+      disabled: string;
+      disabledBackground: string;
+      disabledBorder: string;
+      readonlyBackground: string;
+      errorBorderBottom: string;
     };
   }
   interface PaletteOptions {
     global: {
+      color100: string;
       bg100: string;
       bgDark100: string;
       danger100: string;
@@ -56,6 +70,18 @@ declare module '@mui/material/styles/createPalette' {
     tooltip: {
       content: string;
       contentBg: string;
+    };
+    textfield: {
+      background: string;
+      border: string;
+      borderBottom: string;
+      placeholder: string;
+      hoverBorderBottom: string;
+      disabled: string;
+      disabledBackground: string;
+      disabledBorder: string;
+      readonlyBackground: string;
+      errorBorderBottom: string;
     };
   }
 }
@@ -66,10 +92,12 @@ declare module '@mui/material/styles/createTypography' {
   interface Typography {
     global: TypographyStyle & GlobalFontStyle;
     tooltip: TypographyStyle;
+    textfield: TypographyStyle;
   }
   interface TypographyOptions {
     global?: TypographyStyleOptions & GlobalFontStyle;
     tooltip?: TypographyStyleOptions;
+    textfield?: TypographyStyleOptions;
   }
 }
 
@@ -100,5 +128,11 @@ export interface Space {
     contentPaddingRight: string;
     contentPaddingBottom: string;
     contentPaddingLeft: string;
+  };
+  textfield: {
+    paddingX: string;
+    paddingY: string;
+    errorPaddingBottom: string;
+    errorPaddingRight: string;
   };
 }
