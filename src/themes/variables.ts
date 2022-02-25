@@ -2,6 +2,7 @@
 
 export const colors = {
   global: {
+    color100: '#151515',
     bg100: '#fff',
     bgDark100: '#151515',
     danger100: '#c9190b',
@@ -24,6 +25,18 @@ export const colors = {
     content: '#fff',
     contentBg: '#151515',
   },
+  textfield: {
+    background: '#fff',
+    border: '#f0f0f0',
+    borderBottom: '#8a8d90',
+    placeholder: '#6a6e73',
+    hoverBorderBottom: '#06c',
+    disabled: '#6a6e73',
+    disabledBackground: '#f0f0f0',
+    disabledBorder: 'transparent',
+    readonlyBackground: '#f0f0f0',
+    errorBorderBottom: '#c9190b',
+  },
 };
 
 export const typography = {
@@ -39,6 +52,9 @@ export const typography = {
   },
   tooltip: {
     fontSize: '0.875rem',
+  },
+  textfield: {
+    fontSize: '1rem',
   },
 };
 
@@ -58,5 +74,11 @@ export const spaces = {
     contentPaddingRight: '1.5rem',
     contentPaddingBottom: '1rem',
     contentPaddingLeft: '1.5rem',
+  },
+  textfield: {
+    paddingX: '0.5rem',
+    paddingY: 'calc(0.375rem - 1px)',
+    errorPaddingBottom: 'calc(0.375rem - 2px)',
+    errorPaddingRight: '2rem',
   },
 };
