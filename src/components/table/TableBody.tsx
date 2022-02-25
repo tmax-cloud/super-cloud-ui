@@ -28,15 +28,9 @@ function TableBody(props: TableBodyProps) {
     );
   }
   return (
-    <>
-      {items.map((item: any) => (
-        <TableRow key={item.metadata.uid}>
-          {tableItems.map((currentColumnItem: TableItemProps, idx: number) => (
-            <TableCell key={currentColumnItem.name}>{getValue(item, currentColumnItem)}</TableCell>
-          ))}
-        </TableRow>
+    <MuiTableBody>
       ))}
-    </>
+    </MuiTableBody>
   );
 }
 
