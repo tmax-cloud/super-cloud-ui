@@ -13,7 +13,7 @@ function Table(props: TableProps) {
       {isLoaded && (
         <MuiTable aria-label="simple table">
           <TableHead tableItems={tableItems} />
-          <TableBody items={data.items} tableItems={tableItems} errorMsg={errorMsg as string} />
+          <TableBody items={data?.items} tableItems={tableItems} errorMsg={errorMsg as string} />
         </MuiTable>
       )}
     </>
