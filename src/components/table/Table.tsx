@@ -19,14 +19,20 @@ function Table(props: TableProps) {
     </>
   );
 }
-
+const customValueSample = (item: any) => {
+  if (item.spec.type !== 'LoadBalancer') {
+    return 'No External IP';
+  }
+  return _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-');
+};
 Table.defaultProps = {
   tableItems: [
     { name: 'name', displayTitle: 'Name', className: '' },
     { name: 'namespace', displayTitle: 'Namespace', className: '' },
     { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
-    { name: 'externalIP', displayTitle: 'External IP', className: '', customValue: (item: any) => (item.spec.type !== 'LoadBalancer' ? 'No External IP' : _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-')) },
+    { name: 'externalIP', displayTitle: 'External IP', className: '', customValue: customValueSample },
   ],
+  kindObj: ServiceModel,
 };
 
 export interface TableProps {
