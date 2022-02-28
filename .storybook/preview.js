@@ -13,6 +13,7 @@ worker.start({
   serviceWorker: {
     url: location.href.includes('github.io') ? '/super-cloud-ui/mockServiceWorker.js' : '/mockServiceWorker.js',
   },
+  onUnhandledRequest: 'bypass',
 });
 // }
 
