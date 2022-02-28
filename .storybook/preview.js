@@ -3,6 +3,8 @@ import { ThemeProvider } from 'emotion-theming';
 import { theme } from '../src/themes';
 import ThemeWrapper from '../src/themes/ThemeWrapper';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
+import { withTests } from '@storybook/addon-jest';
+import results from '../.jest-test-results.json';
 
 // Initialize MSW
 initialize();
@@ -47,4 +49,7 @@ export const decorators = [
       </ThemeWrapper>
     </ThemeProvider>
   ),
+  withTests({
+    results,
+  }),
 ];

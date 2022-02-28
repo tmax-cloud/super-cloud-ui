@@ -14,6 +14,10 @@ Basic.args = {
   children: 'Button',
 };
 
+Basic.parameters = {
+  jest: 'Button.test.tsx',
+};
+
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,

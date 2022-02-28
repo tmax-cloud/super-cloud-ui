@@ -20,3 +20,6 @@ export default {
 const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
 
 export const Basic = Template.bind({});
+Basic.parameters = {
+  jest: 'Table.test.tsx',
+};

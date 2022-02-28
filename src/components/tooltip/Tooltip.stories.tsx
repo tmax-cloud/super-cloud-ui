@@ -22,3 +22,7 @@ Basic.args = {
   title: 'Tooltip Label',
   children: <Button>Hover me</Button>,
 };
+
+Basic.parameters = {
+  jest: 'Tooltip.test.tsx',
+};
