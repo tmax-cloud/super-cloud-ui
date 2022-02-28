@@ -9,7 +9,7 @@ describe('<Table /> 스냅샷 테스트', () => {
   test('table render', () => {
     const { container } = render(
       <Table
-        tableItems={[
+        columnDataList={[
           { name: 'name', displayTitle: 'Name', className: '' },
           { name: 'namespace', displayTitle: 'Namespace', className: '' },
         ]}
@@ -29,7 +29,7 @@ test('빈 배열 왔을 때 `해당 리소스를 찾을 수 없습니다.` 잘 �
 
   render(
     <Table
-      tableItems={[
+      columnDataList={[
         { name: 'name', displayTitle: 'Name', className: '' },
         { name: 'namespace', displayTitle: 'Namespace', className: '' },
       ]}
@@ -50,7 +50,7 @@ test('서버 에러 404일 때 errorMsg 잘 뜨는지 테스트', async () => {
 
   render(
     <Table
-      tableItems={[
+      columnDataList={[
         { name: 'name', displayTitle: 'Name', className: '' },
         { name: 'namespace', displayTitle: 'Namespace', className: '' },
       ]}

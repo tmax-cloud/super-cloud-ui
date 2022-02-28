@@ -8,7 +8,7 @@ export default {
   title: 'Component/Table',
   component: Table,
   argTypes: {
-    tableItems: {
+    columnDataList: {
       description: `table colum 설정 {name, displayTitle, className}[]`,
     },
     kindObj: {

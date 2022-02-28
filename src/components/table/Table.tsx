@@ -1,19 +1,33 @@
 import * as React from 'react';
 import * as _ from 'lodash-es';
+import { Table as MuiTable } from '@mui/material';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
 import useRequest from '../../apis/useRequest';
 import { K8sKind, RequestType } from '../../types';
+import { ServiceModel } from '../../models/index';
 
 function Table(props: TableProps) {
-  const { tableItems, kindObj } = props;
+  const { columnDataList, kindObj } = props;
+  const [order, setOrder] = React.useState<Order>('asc');
+  const [orderBy, setOrderBy] = React.useState(columnDataList[0].name);
   const { isLoaded, data, errorMsg } = useRequest(kindObj, RequestType.LIST);
+
+  const handleRequestSort = React.useCallback(
+    (event: React.MouseEvent<unknown>, property: any) => {
+      const isAsc = orderBy === property && order === 'asc';
+      setOrder(isAsc ? 'desc' : 'asc');
+      setOrderBy(property);
+    },
+    [order, orderBy],
+  );
+
   return (
     <>
       {isLoaded && (
         <MuiTable aria-label="simple table">
-          <TableHead tableItems={tableItems} />
-          <TableBody items={data?.items} tableItems={tableItems} errorMsg={errorMsg as string} />
+          <TableHead columnDataList={columnDataList} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
+          <TableBody items={data?.items} columnDataList={columnDataList} errorMsg={errorMsg as string} order={order} orderBy={orderBy} />
         </MuiTable>
       )}
     </>
@@ -26,7 +40,7 @@ const customValueSample = (item: any) => {
   return _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-');
 };
 Table.defaultProps = {
-  tableItems: [
+  columnDataList: [
     { name: 'name', displayTitle: 'Name', className: '' },
     { name: 'namespace', displayTitle: 'Namespace', className: '' },
     { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
@@ -35,8 +49,9 @@ Table.defaultProps = {
   kindObj: ServiceModel,
 };
 
+export type Order = 'asc' | 'desc';
 export interface TableProps {
-  tableItems: TableItemProps[];
+  columnDataList: TableItemProps[];
   kindObj: K8sKind;
 }
 export interface TableItemProps {

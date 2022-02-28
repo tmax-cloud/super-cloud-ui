@@ -1,43 +1,24 @@
 import * as React from 'react';
-import * as _ from 'lodash-es';
-import { TableBody as MuiTableBody, TableCell, TableRow } from '@mui/material';
+import { TableBody as MuiTableBody } from '@mui/material';
+import { Order } from './Table';
 import { TableItemProps } from './Table';
-import { fixedTableItem } from './fixedTableItem';
-import StatusBox from './StatusBox';
-
-const getValue = (item: any, currentColumnItem: TableItemProps) => {
-  const { customValue, name, ref } = currentColumnItem;
-  if (customValue) {
-    return customValue(item);
-  }
-
-  return _.get(item, (fixedTableItem as any)[name] || ref);
-};
+import { makeTableRow, sortTableData, makeErrorTableRow } from './utils/tableDataOperatorUtils';
 
 function TableBody(props: TableBodyProps) {
-  const { items, tableItems, errorMsg } = props;
-  if (errorMsg || !items.length) {
-    return (
-      <MuiTableBody>
-        <TableRow key="error-row">
-          <TableCell align="center" colSpan={tableItems.length}>
-            <StatusBox message={errorMsg} />
-          </TableCell>
-        </TableRow>
-      </MuiTableBody>
-    );
-  }
-  return (
-    <MuiTableBody>
-      ))}
-    </MuiTableBody>
-  );
-}
+  const { items, columnDataList, errorMsg, order, orderBy } = props;
+  const targetColumn = columnDataList.find((cur) => cur.name === orderBy) as TableItemProps;
 
-interface TableBodyProps {
-  tableItems: TableItemProps[];
-  items: any;
-  errorMsg: string;
+  if (errorMsg || !items.length) {
+    return <MuiTableBody>{makeErrorTableRow(columnDataList, errorMsg)}</MuiTableBody>;
+  }
+  return <MuiTableBody>{makeTableRow(sortTableData(items, targetColumn, order), columnDataList)}</MuiTableBody>;
 }
 
 export default TableBody;
+interface TableBodyProps {
+  columnDataList: TableItemProps[];
+  items: any;
+  errorMsg: string;
+  order: Order;
+  orderBy: any;
+}

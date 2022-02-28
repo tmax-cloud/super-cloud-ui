@@ -1,15 +1,21 @@
 import * as React from 'react';
-import { TableHead as MuiTableHead, TableCell, TableRow } from '@mui/material';
-import { TableItemProps } from './Table';
+import { TableHead as MuiTableHead, TableCell, TableRow, TableSortLabel } from '@mui/material';
+import { TableItemProps, Order } from './Table';
 
 function TableHead(props: TableHeadProps) {
-  const { tableItems } = props;
+  const { columnDataList, onRequestSort, order, orderBy } = props;
+
+  const createSortHandler = (property: any) => (event: React.MouseEvent<unknown>) => {
+    onRequestSort(event, property);
+  };
   return (
     <MuiTableHead>
       <TableRow>
-        {tableItems.map((item: TableItemProps) => (
-          <TableCell key={item.name} className={item.className}>
-            {item.displayTitle}
+        {columnDataList.map((item: TableItemProps) => (
+          <TableCell key={item.name} className={item.className} sortDirection={orderBy === item.name ? order : false}>
+            <TableSortLabel active={orderBy === item.name} direction={orderBy === item.name ? order : 'asc'} onClick={createSortHandler(item.name)}>
+              {item.displayTitle}
+            </TableSortLabel>
           </TableCell>
         ))}
       </TableRow>
@@ -18,7 +24,10 @@ function TableHead(props: TableHeadProps) {
 }
 
 interface TableHeadProps {
-  tableItems: TableItemProps[];
+  onRequestSort: (event: React.MouseEvent<unknown>, property: any) => void;
+  order: Order;
+  orderBy: string;
+  columnDataList: TableItemProps[];
 }
 
 export default TableHead;
