@@ -8,7 +8,7 @@ export const getTableValue = (item: any, currentColumnItem: TableItemProps) => {
     return customValue(item);
   }
 
-  return _.get(item, (fixedTableItem as any)[name] || ref);
+  return _.get(item, ref || (fixedTableItem as any)[name]);
 };
 
 export const sortTableData = (items: any, targetColumn: TableItemProps, order: 'asc' | 'desc') =>
