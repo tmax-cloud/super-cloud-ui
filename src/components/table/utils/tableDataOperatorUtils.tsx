@@ -3,9 +3,8 @@ import * as React from 'react';
 import StatusBox from '../StatusBox';
 import { fixedTableItem } from './fixedTableItem';
 import { TableItemProps } from '../Table';
-import { TableCell, TableRow } from '@mui/material';
 
-const getTableValue = (item: any, currentColumnItem: TableItemProps) => {
+export const getTableValue = (item: any, currentColumnItem: TableItemProps) => {
   const { customValue, name, ref } = currentColumnItem;
   if (customValue) {
     return customValue(item);
@@ -26,20 +25,3 @@ export const sortTableData = (items: any, targetColumn: TableItemProps, order: '
     }
     return 0;
   });
-
-export const makeTableRow = (tableItems: any, columnDataList: TableItemProps[]) =>
-  tableItems.map((item: any) => (
-    <TableRow key={item.metadata.uid}>
-      {columnDataList.map((currentColumnItem: TableItemProps) => (
-        <TableCell key={currentColumnItem.name}>{getTableValue(item, currentColumnItem)}</TableCell>
-      ))}
-    </TableRow>
-  ));
-
-export const makeErrorTableRow = (columnDataList: TableItemProps[], errorMsg: string) => (
-  <TableRow key="error-row">
-    <TableCell align="center" colSpan={columnDataList.length}>
-      <StatusBox message={errorMsg} />
-    </TableCell>
-  </TableRow>
-);
