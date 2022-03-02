@@ -8,24 +8,27 @@ function useRequest(kindObj: K8sKind, requestType: RequestType) {
   const [data, setData] = React.useState<any>();
   const [errorMsg, setErrorMsg] = React.useState<string>('');
 
-  const getData = (model: K8sKind) => {
-    const url = getProperUrl(model, requestType);
+  const getData = React.useCallback(
+    (model: K8sKind) => {
+      const url = getProperUrl(model, requestType);
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        setData(_.defaultsDeep(data));
-        setLoaded(true);
-      })
-      .catch((e) => {
-        setErrorMsg(e.message);
-        setLoaded(true);
-      });
-  };
+      fetch(url)
+        .then((response) => response.json())
+        .then((data) => {
+          setData(_.defaultsDeep(data));
+          setLoaded(true);
+        })
+        .catch((e) => {
+          setErrorMsg(e.message);
+          setLoaded(true);
+        });
+    },
+    [requestType],
+  );
 
   React.useEffect(() => {
     getData(kindObj);
-  }, [kindObj]);
+  }, [kindObj, getData]);
 
   return { isLoaded, data, errorMsg };
 }
