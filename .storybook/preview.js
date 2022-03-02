@@ -3,6 +3,8 @@ import { ThemeProvider } from 'emotion-theming';
 import { theme } from '../src/themes';
 import ThemeWrapper from '../src/themes/ThemeWrapper';
 import { initialize, mswDecorator } from 'msw-storybook-addon';
+import { withTests } from '@storybook/addon-jest';
+import results from '../.jest-test-results.json';
 
 // Initialize MSW
 initialize();
@@ -13,6 +15,7 @@ worker.start({
   serviceWorker: {
     url: location.href.includes('github.io') ? '/super-cloud-ui/mockServiceWorker.js' : '/mockServiceWorker.js',
   },
+  onUnhandledRequest: 'bypass',
 });
 // }
 
@@ -46,4 +49,7 @@ export const decorators = [
       </ThemeWrapper>
     </ThemeProvider>
   ),
+  withTests({
+    results,
+  }),
 ];
