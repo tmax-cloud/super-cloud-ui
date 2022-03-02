@@ -5,7 +5,6 @@ import TableHead from './TableHead';
 import TableBody from './TableBody';
 import useRequest from '../../apis/useRequest';
 import { K8sKind, RequestType } from '../../types';
-import { ServiceModel } from '../../models/index';
 
 function Table(props: TableProps) {
   const { columnDataList, kindObj } = props;
@@ -33,21 +32,6 @@ function Table(props: TableProps) {
     </>
   );
 }
-const customValueSample = (item: any) => {
-  if (item.spec.type !== 'LoadBalancer') {
-    return 'No External IP';
-  }
-  return _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-');
-};
-Table.defaultProps = {
-  columnDataList: [
-    { name: 'name', displayTitle: 'Name', className: '' },
-    { name: 'namespace', displayTitle: 'Namespace', className: '' },
-    { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
-    { name: 'externalIP', displayTitle: 'External IP', className: '', customValue: customValueSample },
-  ],
-  kindObj: ServiceModel,
-};
 
 export type Order = 'asc' | 'desc';
 export interface TableProps {
