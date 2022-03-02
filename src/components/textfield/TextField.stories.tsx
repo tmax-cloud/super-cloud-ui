@@ -14,10 +14,6 @@ Basic.args = {
   placeholder: 'Type something...',
 };
 
-Basic.parameters = {
-  jest: 'TextField.test.tsx',
-};
-
 export const Disabled = Template.bind({});
 Disabled.args = {
   disabled: true,
