@@ -13,9 +13,9 @@ export const TableRow = (tableItems: any, columnDataList: TableItemProps[]) =>
   ));
 
 export const ErrorTableRow = (columnDataList: TableItemProps[], errorMsg: string) => (
-  <TableRow key="error-row">
+  <MuiTableRow key="error-row">
     <TableCell align="center" colSpan={columnDataList.length}>
       <StatusBox message={errorMsg} />
     </TableCell>
-  </TableRow>
+  </MuiTableRow>
 );
