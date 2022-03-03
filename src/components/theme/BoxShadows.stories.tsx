@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react';
 import { BoxShadows as ThemeBoxShadows } from './BoxShadows';
 
 export default {
-  title: 'Theme/Box Shadows',
+  title: 'Theme/Shadows',
   component: ThemeBoxShadows,
   parameters: {
     options: {
@@ -17,6 +17,6 @@ export default {
   },
 } as ComponentMeta<typeof ThemeBoxShadows>;
 
-export const BoxShadows = () => {
+export const Shadows = () => {
   return <ThemeBoxShadows />;
 };
