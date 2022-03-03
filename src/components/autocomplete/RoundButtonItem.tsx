@@ -11,6 +11,7 @@ export const RoundButtonItem = (itemProps: RoundButtonItemProps) => {
           overflow: 'hidden',
           padding: '1px 6px',
           maxWidth: 'calc(100% - 0.5rem)',
+          minHeight: 'auto',
           backgroundColor: '#f5f5f5',
           border: '1px solid #ededed',
           borderRadius: 12,
