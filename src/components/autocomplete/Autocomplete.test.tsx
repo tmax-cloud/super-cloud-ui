@@ -4,11 +4,11 @@ import TextField from '../textfield/TextField';
 import Autocomplete from './Autocomplete';
 
 describe('Autocomplete', () => {
-  test('renders correctly', () => {
+  test('renders correctly.', () => {
     const { container } = render(<Autocomplete open options={['one', 'two']} renderInput={(params) => <TextField {...params} />} />);
     expect(container).toMatchSnapshot();
   });
-  test('renders correctly if option type is label', () => {
+  test('renders correctly if option type is label.', () => {
     render(<Autocomplete open options={['one', 'two']} optionType="label" renderInput={(params) => <TextField {...params} />} />);
     const listbox = screen.getByRole('listbox');
     const options = screen.getAllByRole('option');
