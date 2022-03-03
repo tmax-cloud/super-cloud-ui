@@ -1,32 +1,100 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<Table /> snapshot test table render 1`] = `<div />`;
-
-exports[`<Table /> 스냅샷 테스트 table render 1`] = `<div />`;
-
-exports[`Table Test table render 1`] = `
-<div>
-  <table
-    aria-label="simple table"
-    class="MuiTable-root css-rqglhn-MuiTable-root"
+exports[`테이블 테스트 테이블 스냅샷 테스트 1`] = `
+<table
+  aria-label="simple table"
+  class="MuiTable-root css-rqglhn-MuiTable-root"
+>
+  <thead
+    class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
   >
-    <thead
-      class="MuiTableHead-root css-15wwp11-MuiTableHead-root"
+    <tr
+      class="MuiTableRow-root MuiTableRow-head css-1q1u3t4-MuiTableRow-root"
     >
+      <th
+        aria-sort="ascending"
+        class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
+        scope="col"
+      >
+        <span
+          class="MuiButtonBase-root MuiTableSortLabel-root Mui-active css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+          role="button"
+          tabindex="0"
+        >
+          Name
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+            data-testid="ArrowDownwardIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            />
+          </svg>
+        </span>
+      </th>
       <th
         class="MuiTableCell-root MuiTableCell-head MuiTableCell-sizeMedium css-1ygcj2i-MuiTableCell-root"
         scope="col"
       >
-        Dessert (100g serving)
+        <span
+          class="MuiButtonBase-root MuiTableSortLabel-root css-1qgma8u-MuiButtonBase-root-MuiTableSortLabel-root"
+          role="button"
+          tabindex="0"
+        >
+          Namespace
+          <svg
+            aria-hidden="true"
+            class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiTableSortLabel-icon MuiTableSortLabel-iconDirectionAsc css-1vweko9-MuiSvgIcon-root-MuiTableSortLabel-icon"
+            data-testid="ArrowDownwardIcon"
+            focusable="false"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z"
+            />
+          </svg>
+        </span>
       </th>
-    </thead>
-    <tbody
-      class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+    </tr>
+  </thead>
+  <tbody
+    class="MuiTableBody-root css-apqrd9-MuiTableBody-root"
+  >
+    <tr
+      class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
     >
       <td
-        class="MuiTableCell-root MuiTableCell-body MuiTableCell-alignRight MuiTableCell-sizeMedium css-177gid-MuiTableCell-root"
-      />
-    </tbody>
-  </table>
-</div>
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        data-testid="0_0_cell"
+      >
+        api-gateway
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        data-testid="0_1_cell"
+      >
+        api-gateway-system
+      </td>
+    </tr>
+    <tr
+      class="MuiTableRow-root css-1q1u3t4-MuiTableRow-root"
+    >
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        data-testid="1_0_cell"
+      >
+        console
+      </td>
+      <td
+        class="MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-1ex1afd-MuiTableCell-root"
+        data-testid="1_1_cell"
+      >
+        api-gateway-system
+      </td>
+    </tr>
+  </tbody>
+</table>
 `;
