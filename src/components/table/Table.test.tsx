@@ -1,5 +1,5 @@
 import { rest } from 'msw';
-import * as React from 'react';
+import userEvent from '@testing-library/user-event';
 import { render, screen } from '../../../test-utils';
 import { server } from '../../mocks/server';
 import Table from './Table';
@@ -48,5 +48,20 @@ describe('테이블 테스트', () => {
 
     const errorBox = await screen.findByTestId('error-box');
     expect(errorBox).toHaveTextContent('Unexpected end of JSON input');
+  });
+
+  // MuiTableSortLabel-iconDirectionDesc로 바껴있는 걸 확인 가능.
+  test('sort 버튼 클릭시에 icon 변경 테스트', async () => {
+    setup();
+    const sortBtn = await screen.findAllByRole('button');
+    userEvent.click(sortBtn[0]);
+    expect(screen.getAllByTestId('ArrowDownwardIcon')[0]).toHaveClass('MuiTableSortLabel-iconDirectionDesc');
+  });
+
+  test('sort 버튼 클릭시에 제대로 sorting 이루어지는지', async () => {
+    setup();
+    const sortBtn = await screen.findAllByRole('button');
+    userEvent.click(sortBtn[0]);
+    expect(screen.getByTestId('0_0_cell')).toHaveTextContent('console');
   });
 });
