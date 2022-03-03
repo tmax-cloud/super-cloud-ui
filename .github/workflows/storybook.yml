@@ -20,10 +20,9 @@ jobs:
     - name: Install and Build 🔧
       run: |
         yarn install
-        yarn run build-storybook -o docs
+        yarn build-storybook
     - name: Deploy 🚀
       uses: JamesIves/github-pages-deploy-action@v4.2.5
       with:
-        ACCESS_TOKEN: ${{ secrets.YUNHEE_TOKEN }}
-        BRANCH: gh-pages  # The branch the action should deploy to.
-        FOLDER: docs # The folder the action should deploy.
+        branch: gh-pages  # The branch the action should deploy to.
+        folder: docs # The folder the action should deploy.
