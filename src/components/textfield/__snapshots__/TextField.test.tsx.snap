@@ -3,41 +3,7 @@
 exports[`TextField renders correctly 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-1sz0tjm-MuiFormControl-root-MuiTextField-root"
-  >
-    <div
-      class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
-    >
-      <input
-        aria-invalid="false"
-        class="MuiOutlinedInput-input MuiInputBase-input css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input"
-        id="mui-1"
-        type="text"
-        value=""
-      />
-      <fieldset
-        aria-hidden="true"
-        class="MuiOutlinedInput-notchedOutline css-1d3z3hw-MuiOutlinedInput-notchedOutline"
-      >
-        <legend
-          class="css-nnbavb"
-        >
-          <span
-            class="notranslate"
-          >
-            ​
-          </span>
-        </legend>
-      </fieldset>
-    </div>
-  </div>
-</div>
-`;
-
-exports[`TextField textfield renders correctly 1`] = `
-<div>
-  <div
-    class="MuiFormControl-root MuiTextField-root css-1sz0tjm-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-a4yz8l-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
