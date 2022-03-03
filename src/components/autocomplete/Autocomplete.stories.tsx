@@ -24,3 +24,4 @@ TextfieldWithLabelList.args = {
   renderInput: (params) => <TextField placeholder="Type something..." {...params} />,
   sx: { width: 300 },
 };
+TextfieldWithLabelList.storyName = 'Test';
