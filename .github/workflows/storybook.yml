@@ -11,6 +11,22 @@ on:
 
 # List of jobs
 jobs:
+  test-and-push-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+      - name: Yarn install 🔧
+        run: |
+          yarn install 
+      - name: Test 🔍
+        run: |
+          yarn test:generate-output
+      - name: Commit test results ☁️
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Update .jest-test-results.json"
+          file_pattern: .jest-test-results.json
   build-and-deploy:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
     runs-on: ubuntu-latest
