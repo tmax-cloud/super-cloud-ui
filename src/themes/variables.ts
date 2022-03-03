@@ -82,3 +82,15 @@ export const spaces = {
     errorPaddingRight: '2rem',
   },
 };
+
+export const boxShadows = {
+  global: {
+    sm: '0 0.0625rem 0.125rem 0 rgba(3, 3, 3, 0.12), 0 0 0.125rem 0 rgba(3, 3, 3, 0.06)',
+    md: '0 0.25rem 0.5rem 0rem rgba(3, 3, 3, 0.12), 0 0 0.25rem 0 rgba(3, 3, 3, 0.06)',
+    lg: '0 0.5rem 1rem 0 rgba(3, 3, 3, 0.16), 0 0 0.375rem 0 rgba(3, 3, 3, 0.08)',
+    xl: '0 1rem 2rem 0 rgba(3, 3, 3, 0.16), 0 0 0.5rem 0 rgba(3, 3, 3, 0.1)',
+  },
+  autocomplete: {
+    boxShadow: '0 .0625rem .0625rem 0rem rgba(3,3,3,0.05),0 .25rem .5rem .25rem rgba(3,3,3,0.06)',
+  },
+};

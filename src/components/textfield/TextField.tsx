@@ -30,6 +30,7 @@ const StyledTextField = styled(MuiTextField, {
     backgroundPosition: ownerState.error && 'calc(100% - 0.5rem) center',
     backgroundSize: ownerState.error && '1rem 1rem',
     backgroundRepeat: ownerState.error && 'no-repeat',
+    padding: 0,
     '& fieldset': {
       border: 'none',
       padding: 0,

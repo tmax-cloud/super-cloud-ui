@@ -3,6 +3,7 @@ import '@material-ui/core/styles';
 declare module '@mui/material/styles' {
   interface ExtendedTheme {
     spaces: Space;
+    boxShadows: BoxShadow;
   }
   interface Theme extends ExtendedTheme {}
   interface ThemeOptions extends ExtendedTheme {}
@@ -134,5 +135,17 @@ export interface Space {
     paddingY: string;
     errorPaddingBottom: string;
     errorPaddingRight: string;
+  };
+}
+
+export interface BoxShadow {
+  global: {
+    sm: string;
+    md: string;
+    lg: string;
+    xl: string;
+  };
+  autocomplete: {
+    boxShadow: string;
   };
 }
