@@ -17,29 +17,36 @@ function setup() {
   );
 }
 
+describe('테이블 테스트', () => {
+  test('테이블 스냅샷 테스트', async () => {
     setup();
-test('빈 배열 왔을 때 `해당 리소스를 찾을 수 없습니다.` 잘 뜨는지 테스트', async () => {
-  server.use(
-    rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
-      return res.once(ctx.status(200), ctx.json({ items: [] }));
-    }),
-  );
+    const table = await screen.findByRole('table');
+    expect(table).toMatchSnapshot();
+  });
 
-    setup();
-
-  const emptyBox = await screen.findByTestId('empty-box');
-  expect(emptyBox).toHaveTextContent('해당 리소스를 찾을 수 없습니다.');
-});
-
-test('서버 에러 404일 때 errorMsg 잘 뜨는지 테스트', async () => {
-  server.use(
-    rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
-      return res.once(ctx.status(404));
-    }),
-  );
+  test('빈 배열 왔을 때 `해당 리소스를 찾을 수 없습니다.` 잘 뜨는지 테스트', async () => {
+    server.use(
+      rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
+        return res.once(ctx.status(200), ctx.json({ items: [] }));
+      }),
+    );
 
     setup();
 
-  const errorBox = await screen.findByTestId('error-box');
-  expect(errorBox).toHaveTextContent('Unexpected end of JSON input');
+    const emptyBox = await screen.findByTestId('empty-box');
+    expect(emptyBox).toHaveTextContent('해당 리소스를 찾을 수 없습니다.');
+  });
+
+  test('서버 에러 404일 때 errorMsg 잘 뜨는지 테스트', async () => {
+    server.use(
+      rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
+        return res.once(ctx.status(404));
+      }),
+    );
+
+    setup();
+
+    const errorBox = await screen.findByTestId('error-box');
+    expect(errorBox).toHaveTextContent('Unexpected end of JSON input');
+  });
 });
