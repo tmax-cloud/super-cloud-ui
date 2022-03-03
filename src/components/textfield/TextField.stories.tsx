@@ -7,27 +7,22 @@ export default {
   component: TextField,
 } as ComponentMeta<typeof TextField>;
 
-const Template: ComponentStory<typeof TextField> = (args) => <TextField {...args} />;
+const BasicTemplate: ComponentStory<typeof TextField> = () => (
+  <TextField placeholder="Type something..." />
+);
+export const Basic = BasicTemplate.bind({});
 
-export const Basic = Template.bind({});
-Basic.args = {
-  placeholder: 'Type something...',
-};
+const DisabledTemplate: ComponentStory<typeof TextField> = () => (
+  <TextField disabled value="disabled text input example" />
+);
+export const Disabled = DisabledTemplate.bind({});
 
-export const Disabled = Template.bind({});
-Disabled.args = {
-  disabled: true,
-  value: 'disabled text input example',
-};
+const ReadonlyTemplate: ComponentStory<typeof TextField> = () => (
+  <TextField readOnly value="read only text input example" />
+);
+export const Readonly = ReadonlyTemplate.bind({});
 
-export const Readonly = Template.bind({});
-Readonly.args = {
-  readOnly: true,
-  value: 'read only text input example',
-};
-
-export const Error = Template.bind({});
-Error.args = {
-  error: true,
-  helperText: 'Enter a value.',
-};
+const ErrorTemplate: ComponentStory<typeof TextField> = () => (
+  <TextField error helperText="Enter a value." />
+);
+export const Error = ErrorTemplate.bind({});

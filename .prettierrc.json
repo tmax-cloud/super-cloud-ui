@@ -3,5 +3,13 @@
   "singleQuote": true,
   "trailingComma": "all",
   "bracketSpacing": true,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "overrides": [
+    {
+      "files": "*.stories.tsx",
+      "options": {
+        "printWidth": 100
+      }
+    }
+  ]
 }
