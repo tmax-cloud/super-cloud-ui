@@ -52,6 +52,7 @@ export interface AutocompleteProps {
   onChange?: (event: React.SyntheticEvent, value: any, reason: AutocompleteChangeReason, details?: AutocompleteChangeDetails<string>) => void;
   /**
    * Callback fired when the popup requests to be closed.
+   * Use in controlled mode (see open).
    *
    * @param {React.SyntheticEvent} event The event source of the callback.
    * @param {string} reason Can be: `"toggleInput"`, `"escape"`, `"selectOption"`, `"removeOption"`, `"blur"`.
@@ -67,6 +68,7 @@ export interface AutocompleteProps {
   onInputChange?: (event: React.SyntheticEvent, value: string, reason: AutocompleteInputChangeReason) => void;
   /**
    * Callback fired when the popup requests to be opened.
+   * Use in controlled mode (see open).
    *
    * @param {React.SyntheticEvent} event The event source of the callback.
    */
