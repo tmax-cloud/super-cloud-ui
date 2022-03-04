@@ -33,7 +33,6 @@ const TextfieldWithLabelListTemplate: ComponentStory<typeof Autocomplete> = () =
   return (
     <Autocomplete
       optionType="label"
-      open
       options={[
         'Lorem',
         'ipsum-incididunt',
