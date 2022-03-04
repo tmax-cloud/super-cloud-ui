@@ -1,0 +1,56 @@
+# Workflow name
+name: PR Test
+
+# Event for the workflow
+on: 
+  pull_request:
+    branches:
+      - main
+    paths: ["src/components/**", "src/templates/**", "src/pages/**"]
+
+# List of jobs
+jobs:
+  test-and-push-results:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install
+        run: |
+          yarn install 
+      - name: Check file existence
+        id: check_file
+        uses: andstor/file-existence-action@v1
+        with:
+          files: ".jest-test-results.json"
+          allow_failure: true
+      - name: If file dose not exist
+        if: failure()
+        uses: actions/github-script@v6
+        with:  
+          script: |                       
+              const ref = "${{github.ref}}"
+              const pull_number = Number(ref.split("/")[2])
+              await github.pulls.createReview({
+                ...context.repo,
+                pull_number,
+                body:"테스트 결과 파일(.jest-test-results.json)을 포함해주세요.",
+                event: "REQUEST_CHANGES"
+              })
+      - name: Test
+        run: |
+          yarn test
+      - name: If test fail
+        if: failure()
+        uses: actions/github-script@v6
+        with:  
+          script: |                       
+              const ref = "${{github.ref}}"
+              const pull_number = Number(ref.split("/")[2])
+              await github.pulls.createReview({
+                ...context.repo,
+                pull_number,
+                body:"테스트 코드를 다시 확인해주세요.",
+                event: "REQUEST_CHANGES"
+              })
+  
