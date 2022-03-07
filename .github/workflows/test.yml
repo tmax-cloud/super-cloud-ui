@@ -30,10 +30,10 @@ jobs:
         with:  
           github-token: ${{ secrets.YUNHEE_TOKEN }}
           script: |                       
-              const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
-                ...context.repo,
-                pull_number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
                 body:"테스트 결과 파일(.jest-test-results.json)을 포함해주세요.",
                 event: "REQUEST_CHANGES"
               })
@@ -46,10 +46,10 @@ jobs:
         with:  
           github-token: ${{ secrets.YUNHEE_TOKEN }}
           script: |                       
-              const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
-                ...context.repo,
-                pull_number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                pull_number: context.payload.pull_request.number,
                 body:"테스트 코드를 다시 확인해주세요.",
                 event: "REQUEST_CHANGES"
               })
