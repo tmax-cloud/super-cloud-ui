@@ -28,6 +28,7 @@ jobs:
         if: failure()
         uses: actions/github-script@v6
         with:  
+          github-token: ${{ secrets.YUNHEE_TOKEN }}
           script: |                       
               const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
@@ -43,6 +44,7 @@ jobs:
         if: failure()
         uses: actions/github-script@v6
         with:  
+          github-token: ${{ secrets.YUNHEE_TOKEN }}
           script: |                       
               const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
