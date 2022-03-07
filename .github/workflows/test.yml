@@ -29,8 +29,7 @@ jobs:
         uses: actions/github-script@v6
         with:  
           script: |                       
-              const ref = "${{github.ref}}"
-              const pull_number = Number(ref.split("/")[2])
+              const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
                 ...context.repo,
                 pull_number,
@@ -45,8 +44,7 @@ jobs:
         uses: actions/github-script@v6
         with:  
           script: |                       
-              const ref = "${{github.ref}}"
-              const pull_number = Number(ref.split("/")[2])
+              const pull_number = "${{github.event.number}}"
               await github.pulls.createReview({
                 ...context.repo,
                 pull_number,
