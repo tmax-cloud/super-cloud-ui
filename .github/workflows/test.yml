@@ -5,7 +5,7 @@ name: PR Test
 on: 
   pull_request:
     branches:
-      - main
+      - dev/yunhee-workflow
     paths: ["src/components/**", "src/templates/**", "src/pages/**"]
 
 # List of jobs
