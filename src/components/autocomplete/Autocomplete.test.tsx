@@ -13,7 +13,7 @@ describe('Autocomplete', () => {
     const listbox = screen.getByRole('listbox');
     const options = screen.getAllByRole('option');
     // check option size
-    expect(options).toHaveLength(4);
+    expect(options).toHaveLength(6);
     // check listbox contains options
     options.forEach((option) => {
       expect(listbox).toContainElement(option);
