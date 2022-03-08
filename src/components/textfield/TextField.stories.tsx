@@ -27,13 +27,20 @@ const ErrorTemplate: ComponentStory<typeof TextField> = () => (
 );
 export const Error = ErrorTemplate.bind({});
 
-const ShortcutTemplate: ComponentStory<typeof TextField> = () => (
-  <TextField enableShortcut placeholder='Press "/" to focus, and press "esc" to blur' />
-);
-export const Shortcut = ShortcutTemplate.bind({});
+export const Shortcut: ComponentStory<typeof TextField> = (props) => {
+  const { enableShortcut, placeholder, ...rest } = props;
+  return <TextField enableShortcut={enableShortcut} placeholder={placeholder} {...rest} />;
+};
+
 Shortcut.parameters = {
   options: {
     enableShortcuts: false,
   },
 };
+
+Shortcut.args = {
+  enableShortcut: true,
+  placeholder: 'Press "/" to focus, and press "esc" to blur',
+};
+
 Shortcut.storyName = 'Focus & Blur with shortcuts';
