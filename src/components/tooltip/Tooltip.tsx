@@ -17,12 +17,16 @@ const StyledTooltip = styled(({ className, ...props }: MuiTooltipProps) => <MuiT
 }));
 
 const Tooltip = (props: TooltipProps) => {
-  const { children, open, title, ...rest } = props;
+  const { children, open, content, ...rest } = props;
   return (
     <ThemeWrapper>
-      <StyledTooltip open={open} title={title} placement="top" arrow {...rest}>
-        <span>{children}</span>
-      </StyledTooltip>
+      {content ? (
+        <StyledTooltip open={open} title={content} placement="top" arrow {...rest}>
+          <span>{children}</span>
+        </StyledTooltip>
+      ) : (
+        children
+      )}
     </ThemeWrapper>
   );
 };
@@ -55,9 +59,9 @@ export interface BaseProps {
    */
   sx?: SxProps<Theme>;
   /**
-   * Tooltip title. Zero-length titles string are never displayed.
+   * Tooltip content. Zero-length titles string are never displayed.
    */
-  title: NonNullable<React.ReactNode>;
+  content?: NonNullable<React.ReactNode>;
 }
 
 export type TooltipProps = BaseProps & React.HTMLAttributes<HTMLDivElement>;

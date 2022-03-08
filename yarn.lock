@@ -2103,6 +2103,26 @@
     regenerator-runtime "^0.13.7"
     ts-dedent "^2.0.0"
 
+"@storybook/addon-storysource@^6.4.19":
+  version "6.4.19"
+  resolved "https://registry.yarnpkg.com/@storybook/addon-storysource/-/addon-storysource-6.4.19.tgz#09ec47b0c9f68ba9590edfcc7bd72984c048d272"
+  integrity sha512-WcjPgd0/m9rGMQbf6H2/wvXUhW5lSELWdXeCCK1taQHQUjhs8tq83fa7OkI9kE25drPiUJuPzObbCoYr94hftQ==
+  dependencies:
+    "@storybook/addons" "6.4.19"
+    "@storybook/api" "6.4.19"
+    "@storybook/client-logger" "6.4.19"
+    "@storybook/components" "6.4.19"
+    "@storybook/router" "6.4.19"
+    "@storybook/source-loader" "6.4.19"
+    "@storybook/theming" "6.4.19"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    loader-utils "^2.0.0"
+    prettier ">=2.2.1 <=2.3.0"
+    prop-types "^15.7.2"
+    react-syntax-highlighter "^13.5.3"
+    regenerator-runtime "^0.13.7"
+
 "@storybook/addon-toolbars@6.4.13":
   version "6.4.13"
   resolved "https://registry.yarnpkg.com/@storybook/addon-toolbars/-/addon-toolbars-6.4.13.tgz#c28fb72897709f689cda3675d3c0a4c26a6fe20d"
@@ -2999,6 +3019,22 @@
     loader-utils "^2.0.0"
     lodash "^4.17.21"
     prettier "<=2.3.0"
+    regenerator-runtime "^0.13.7"
+
+"@storybook/source-loader@6.4.19":
+  version "6.4.19"
+  resolved "https://registry.yarnpkg.com/@storybook/source-loader/-/source-loader-6.4.19.tgz#24d134750bc41a13255b2b4a545f2d82613f004f"
+  integrity sha512-XqTsqddRglvfW7mhyjwoqd/B8L6samcBehhO0OEbsFp6FPWa9eXuObCxtRYIcjcSIe+ksbW3D/54ppEs1L/g1Q==
+  dependencies:
+    "@storybook/addons" "6.4.19"
+    "@storybook/client-logger" "6.4.19"
+    "@storybook/csf" "0.0.2--canary.87bc651.0"
+    core-js "^3.8.2"
+    estraverse "^5.2.0"
+    global "^4.4.0"
+    loader-utils "^2.0.0"
+    lodash "^4.17.21"
+    prettier ">=2.2.1 <=2.3.0"
     regenerator-runtime "^0.13.7"
 
 "@storybook/store@6.4.13":
@@ -11955,7 +11991,7 @@ prelude-ls@~1.1.2:
   resolved "https://registry.yarnpkg.com/prelude-ls/-/prelude-ls-1.1.2.tgz#21932a549f5e52ffd9a827f570e04be62a97da54"
   integrity sha1-IZMqVJ9eUv/ZqCf1cOBL5iqX2lQ=
 
-prettier@<=2.3.0:
+prettier@<=2.3.0, "prettier@>=2.2.1 <=2.3.0":
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.0.tgz#b6a5bf1284026ae640f17f7ff5658a7567fc0d18"
   integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
