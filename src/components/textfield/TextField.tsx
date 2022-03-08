@@ -91,13 +91,13 @@ const StyledTextField = styled(MuiTextField, {
 }));
 
 const TextField = (props: TextFieldProps) => {
-  const { readOnly, keyboardShortcut, ...rest } = props;
+  const { readOnly, enableShortcut, ...rest } = props;
   const { ref } = useDocumentListener<HTMLDivElement>();
   const [visible, setVisible] = React.useState(true);
   return (
     <ThemeWrapper>
       <StyledTextField
-        inputRef={keyboardShortcut ? ref : undefined}
+        inputRef={enableShortcut ? ref : undefined}
         variant="outlined"
         ownerState={props}
         onFocusCapture={() => setVisible(false)}
@@ -105,7 +105,7 @@ const TextField = (props: TextFieldProps) => {
         InputProps={{
           readOnly,
           endAdornment:
-            keyboardShortcut && visible ? (
+            enableShortcut && visible ? (
               <InputAdornment position="end">
                 <KeyboardFocusHint />
               </InputAdornment>
@@ -145,9 +145,9 @@ export interface TextFieldProps {
    */
   id?: string;
   /**
-   * Keyboard shortcut. Key `/` to focus, key `esc` to blur.
+   * If `true`, Key `/` to focus, key `esc` to blur.
    */
-  keyboardShortcut?: boolean;
+  enableShortcut?: boolean;
   /**
    * Name attribute of the `input` element.
    */
