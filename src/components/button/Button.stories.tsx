@@ -7,12 +7,19 @@ export default {
   component: Button,
 } as ComponentMeta<typeof Button>;
 
-const BasicTemplate: ComponentStory<typeof Button> = () => {
-  return <Button>Button</Button>;
+export const Basic: ComponentStory<typeof Button> = (props) => {
+  return <Button {...props}>Button</Button>;
 };
-export const Basic = BasicTemplate.bind({});
 
-const DisabledTemplate: ComponentStory<typeof Button> = () => {
-  return <Button disabled>Button</Button>;
+export const Disabled: ComponentStory<typeof Button> = (props) => {
+  const { disabled, ...rest } = props;
+  return (
+    <Button disabled={disabled} {...rest}>
+      Button
+    </Button>
+  );
 };
-export const Disabled = DisabledTemplate.bind({});
+
+Disabled.args = {
+  disabled: true,
+};

@@ -8,46 +8,61 @@ export default {
   component: Autocomplete,
 } as ComponentMeta<typeof Autocomplete>;
 
-const TextfieldTemplate: ComponentStory<typeof Autocomplete> = () => {
+export const Textfield: ComponentStory<typeof Autocomplete> = (props) => {
+  const { options, renderInput, sx, ...rest } = props;
   return (
     <Autocomplete
-      options={[
-        'Option 1',
-        'Option 2',
-        'Option 3',
-        'Option 4',
-        'Option 5',
-        'Option 6',
-        'Option 7',
-        'Option 8',
-        'Option 9',
-      ]}
+      options={options}
       renderInput={(params) => <TextField placeholder="Type something..." {...params} />}
-      sx={{ width: 300 }}
+      sx={sx}
+      {...rest}
     />
   );
 };
-export const Textfield = TextfieldTemplate.bind({});
 
-const TextfieldWithLabelListTemplate: ComponentStory<typeof Autocomplete> = () => {
+Textfield.args = {
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+    'Option 7',
+    'Option 8',
+    'Option 9',
+  ],
+  renderInput: (params) => <TextField placeholder="Type something..." {...params} />,
+  sx: { width: 300 },
+};
+
+export const TextfieldWithLabelList: ComponentStory<typeof Autocomplete> = (props) => {
+  const { renderLabelOption, options, renderInput, sx, ...rest } = props;
   return (
     <Autocomplete
-      optionType="label"
-      options={[
-        'Lorem',
-        'ipsum-incididunt',
-        'adipiscing-dolore-magna',
-        'dolor-sit',
-        'amet-consectetur',
-        'Ut-enim-ad-minim-veniam-quis-nostrud',
-        'tempor',
-        'incididunt',
-        'Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit',
-      ]}
+      renderLabelOption={renderLabelOption}
+      options={options}
       renderInput={(params) => <TextField placeholder="Type something..." {...params} />}
-      sx={{ width: 300 }}
+      sx={sx}
+      {...rest}
     />
   );
 };
-export const TextfieldWithLabelList = TextfieldWithLabelListTemplate.bind({});
+
+TextfieldWithLabelList.args = {
+  renderLabelOption: true,
+  options: [
+    'Lorem',
+    'ipsum-incididunt',
+    'adipiscing-dolore-magna',
+    'dolor-sit',
+    'amet-consectetur',
+    'Ut-enim-ad-minim-veniam-quis-nostrud',
+    'tempor',
+    'incididunt',
+    'Lorem-ipsum-dolor-sit-amet-consectetur-adipiscing-elit',
+  ],
+  sx: { width: 300 },
+};
+
 TextfieldWithLabelList.storyName = 'Textfield with label list';

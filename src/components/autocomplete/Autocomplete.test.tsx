@@ -9,7 +9,7 @@ describe('Autocomplete', () => {
     expect(container).toMatchSnapshot();
   });
   test('renders correctly if option type is label', () => {
-    render(<Autocomplete open options={['one', 'two']} optionType="label" renderInput={(params) => <TextField {...params} />} />);
+    render(<Autocomplete open options={['one', 'two']} renderLabelOption renderInput={(params) => <TextField {...params} />} />);
     const listbox = screen.getByRole('listbox');
     const options = screen.getAllByRole('option');
     // check option size
