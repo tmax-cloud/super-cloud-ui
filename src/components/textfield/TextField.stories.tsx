@@ -31,3 +31,15 @@ Error.args = {
   error: true,
   helperText: 'Enter a value.',
 };
+
+export const KeyboardFocusBlur = Template.bind({});
+KeyboardFocusBlur.parameters = {
+  options: {
+    enableShortcuts: false,
+  },
+};
+KeyboardFocusBlur.args = {
+  placeholder: 'Press "/" to focus, and press "esc" to blur',
+  keyboardShortcut: true,
+};
+KeyboardFocusBlur.storyName = 'Keyboard focus and blur';

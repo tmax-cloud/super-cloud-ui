@@ -32,6 +32,7 @@ export const parameters = {
     inlineStories: false,
   },
   options: {
+    enableShortcuts: true,
     showPanel: true,
     storySort: {
       method: 'alphabetical',
