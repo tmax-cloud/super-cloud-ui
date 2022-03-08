@@ -133,6 +133,10 @@ export interface TextFieldProps {
    */
   disabled?: boolean;
   /**
+   * If `true`, Key `/` to focus, key `esc` to blur.
+   */
+  enableShortcut?: boolean;
+  /**
    * If `true`, the `input` will indicate an error.
    */
   error?: boolean;
@@ -144,10 +148,6 @@ export interface TextFieldProps {
    * The id of the `input` element.
    */
   id?: string;
-  /**
-   * If `true`, Key `/` to focus, key `esc` to blur.
-   */
-  enableShortcut?: boolean;
   /**
    * Name attribute of the `input` element.
    */
