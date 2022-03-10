@@ -6,7 +6,7 @@ on:
   push:
     branches:
       - main
-    paths: ["src/components/**", "src/templates/**", "src/pages/**"]
+    paths: ["src/components/**", "src/templates/**", "src/pages/**", "src/mocks/**"]
 
 # List of jobs
 jobs:
