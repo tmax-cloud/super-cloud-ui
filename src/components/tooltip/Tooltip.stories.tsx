@@ -15,11 +15,15 @@ export default {
   ],
 } as ComponentMeta<typeof Tooltip>;
 
-const BasicTemplate: ComponentStory<typeof Tooltip> = () => {
+export const Basic: ComponentStory<typeof Tooltip> = (props) => {
+  const { content, ...rest } = props;
   return (
-    <Tooltip content="Tooltip Label">
+    <Tooltip content={content} {...rest}>
       <Button>Hover me</Button>
     </Tooltip>
   );
 };
-export const Basic = BasicTemplate.bind({});
+
+Basic.args = {
+  content: 'Tooltip Label',
+};

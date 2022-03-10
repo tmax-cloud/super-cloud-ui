@@ -5,7 +5,7 @@ import Tooltip from './Tooltip';
 describe('Tooltip', () => {
   test('tooltip renders correctly', () => {
     const { container } = render(
-      <Tooltip title="Tooltip Label" open>
+      <Tooltip content="Tooltip Label" open>
         <div>Hover me</div>
       </Tooltip>,
     );
@@ -13,7 +13,7 @@ describe('Tooltip', () => {
   });
   test('tooltip text renders correctly', () => {
     render(
-      <Tooltip title="Tooltip Label" open>
+      <Tooltip content="Tooltip Label" open>
         <div>Hover me</div>
       </Tooltip>,
     );

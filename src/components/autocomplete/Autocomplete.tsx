@@ -3,19 +3,17 @@ import { Autocomplete as MuiAutocomplete, Theme, AutocompleteRenderInputParams, 
 import { ListContainer } from './ListContainer';
 import { RoundButtonItem } from './RoundButtonItem';
 
-const renderOptionByType = (optionType?: optionType) => {
+const renderOptionByType = (enableLabelOption?: boolean) => {
   const renderLabelOption = (props: React.HTMLAttributes<HTMLLIElement>, option: string) => <RoundButtonItem key={props.id} props={props} item={option} />;
-  return optionType === 'label' ? renderLabelOption : undefined;
+  return enableLabelOption ? renderLabelOption : undefined;
 };
 
 const Autocomplete = (props: AutocompleteProps) => {
-  const { optionType, ...rest } = props;
-  return <MuiAutocomplete disableClearable freeSolo PaperComponent={ListContainer} renderOption={renderOptionByType(optionType)} {...rest} />;
+  const { renderLabelOption, ...rest } = props;
+  return <MuiAutocomplete disableClearable freeSolo PaperComponent={ListContainer} renderOption={renderOptionByType(renderLabelOption)} {...rest} />;
 };
 
 export default Autocomplete;
-
-export type optionType = 'label' | undefined;
 
 export interface AutocompleteProps {
   /**
@@ -82,16 +80,16 @@ export interface AutocompleteProps {
    */
   options: ReadonlyArray<string>;
   /**
-   * Option type. Can be: `"name"`, `"label"`.
-   */
-  optionType?: optionType;
-  /**
    * Render the input.
    *
    * @param {object} params
    * @returns {ReactNode}
    */
   renderInput: (params: AutocompleteRenderInputParams) => React.ReactNode;
+  /**
+   * If true, Options are displayed in label style.
+   */
+  renderLabelOption?: boolean;
   /**
    * The system prop that allows defining system overrides as well as additional CSS styles.
    */
