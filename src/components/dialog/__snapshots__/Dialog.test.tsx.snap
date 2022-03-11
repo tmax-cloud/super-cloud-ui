@@ -1,33 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`삭제 다이알로그 테스트 delete 서버 에러 1`] = `
-<div
-  class="MuiPaper-root MuiPaper-elevation MuiPaper-rounded MuiPaper-elevation0 MuiAlert-root MuiAlert-standardError MuiAlert-standard css-xilmwd-MuiPaper-root-MuiAlert-root"
-  role="alert"
->
-  <div
-    class="MuiAlert-icon css-1ytlwq5-MuiAlert-icon"
-  >
-    <svg
-      aria-hidden="true"
-      class="MuiSvgIcon-root MuiSvgIcon-fontSizeInherit css-1vooibu-MuiSvgIcon-root"
-      data-testid="ErrorOutlineIcon"
-      focusable="false"
-      viewBox="0 0 24 24"
-    >
-      <path
-        d="M11 15h2v2h-2zm0-8h2v6h-2zm.99-5C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"
-      />
-    </svg>
-  </div>
-  <div
-    class="MuiAlert-message css-acap47-MuiAlert-message"
-  >
-    Network request failed
-  </div>
-</div>
-`;
-
 exports[`삭제 다이알로그 테스트 테이블 스냅샷 테스트 1`] = `
 <div
   aria-labelledby="mui-1"
