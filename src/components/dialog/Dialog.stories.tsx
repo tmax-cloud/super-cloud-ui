@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Dialog from '@mui/material/Dialog';
 import BasicDialog, { DialogSize, ContentsType } from './BasicDialog';
 import DeleteResourceDialog from './DeleteResourceDialog';
+import { ServiceModel } from '../../models';
 
 export default {
   title: 'Component/Dialog',
@@ -29,16 +30,6 @@ export const Basic: ComponentStory<typeof BasicDialog> = (props) => (
     typeOfContentList={[ContentsType['string']]}
   />
 );
-
-Basic.args = {
-  isOpen: true,
-  title: 'Basic Dialog',
-  saveButtonText: 'Save',
-  cancelButtonText: 'Cancel',
-  size: DialogSize.medium,
-  typeOfContentList: [ContentsType['string']],
-};
-
 export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResourceDialog> = (
   props,
 ) => (
@@ -51,5 +42,6 @@ export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResource
     resourceName="podName_01"
     namespaceName="namespaceName_01"
     size={DialogSize.medium}
+    kindObj={ServiceModel}
   />
 );

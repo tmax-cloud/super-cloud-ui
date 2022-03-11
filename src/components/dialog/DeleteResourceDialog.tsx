@@ -9,7 +9,11 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import Alert from '@mui/material/Alert';
+import Stack from '@mui/material/Stack';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
+import handleRequest from '../../apis/handleRequest';
+import { K8sKind, RequestType } from '../../types';
 
 export enum DialogSize {
   small = 'small',
@@ -23,8 +27,8 @@ interface DeleteResourceDialogProps {
   cancelButtonText: string;
   resourceName: string;
   namespaceName?: string;
-  onClose?: () => void;
   size?: DialogSize;
+  kindObj: K8sKind;
 }
 
 const dialogSize = {
@@ -47,11 +51,20 @@ const dialogSize = {
     }
   `,
 };
+const alert = {
+  error: css`
+    .MuiPaper-root {
+      width: 100%;
+      height: auto;
+    }
+  `,
+};
 
 export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
-  const { isOpen, title, resourceName, namespaceName, saveButtonText, cancelButtonText, onClose, size } = props;
+  const { kindObj, isOpen, title, resourceName, namespaceName, saveButtonText, cancelButtonText, size } = props;
 
-  const [open, setOpen] = React.useState(isOpen);
+  const [open, setOpen] = React.useState<boolean>(isOpen);
+  const [error, setError] = React.useState<string>('');
 
   const deleteResourceMsg = (resourceName: string, namespaceName?: string) => {
     if (!!namespaceName) {
@@ -65,6 +78,18 @@ export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
     isOpen ? setOpen(true) : setOpen(false);
   }, [isOpen]);
 
+  const onDeleteClick = async () => {
+    try {
+      await handleRequest(kindObj, RequestType.DELETE);
+    } catch (e: any) {
+      setError(e.message);
+    }
+  };
+
+  const onClose = () => {
+    setOpen(false);
+  };
+
   return (
     <div>
       <Dialog css={dialogSize[size as DialogSize]} open={open} onClose={onClose}>
@@ -75,11 +100,16 @@ export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
         <DialogContent>
           <DialogContentText>{deleteResourceMsg(resourceName, namespaceName)}</DialogContentText>
         </DialogContent>
+        {error && (
+          <div css={alert.error}>
+            <Alert severity="error">{error}</Alert>
+          </div>
+        )}
         <DialogActions>
           <Button onClick={onClose} variant="outlined">
             {cancelButtonText}
           </Button>
-          <Button onClick={onClose} variant="contained" color="error">
+          <Button onClick={onDeleteClick} variant="contained" color="error">
             {saveButtonText}
           </Button>
         </DialogActions>

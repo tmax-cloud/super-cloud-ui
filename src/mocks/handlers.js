@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get('/api/kubernetes/api/v1/services/', (req, res, ctx) => {
+  rest.get('/api/kubernetes/api/v1/namespaces/test_ns/services', (req, res, ctx) => {
     return res(
       ctx.json({
         kind: 'ServiceList',
@@ -259,6 +259,21 @@ export const handlers = [
             },
           },
         ],
+      }),
+    );
+  }),
+  rest.delete('/api/kubernetes/api/v1/namespaces/test_ns/services/test_resource', (req, res, ctx) => {
+    return res(
+      ctx.json({
+        kind: 'Status',
+        apiVersion: 'v1',
+        metadata: {},
+        status: 'Success',
+        details: {
+          name: 'test',
+          kind: 'services',
+          uid: '1565ee0a-0623-480d-bcdb-73eacd4cdc86',
+        },
       }),
     );
   }),
