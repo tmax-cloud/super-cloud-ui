@@ -17,23 +17,28 @@ export default {
   },
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
-
-export const Basic = Template.bind({});
+export const Basic: ComponentStory<typeof Table> = (props) => (
+  <Table
+    {...props}
+    columnDataList={[
+      { name: 'name', displayTitle: 'Name', className: '' },
+      { name: 'namespace', displayTitle: 'Namespace', className: '' },
+      { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
+      {
+        name: 'externalIP',
+        displayTitle: 'External IP',
+        className: '',
+        customValue: customValueSample,
+      },
+      { name: 'kebab', displayTitle: '', className: '' },
+    ]}
+    kindObj={ServiceModel}
+  />
+);
 
 const customValueSample = (item: any) => {
   if (item.spec.type !== 'LoadBalancer') {
     return 'No External IP';
   }
   return _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-');
-};
-
-Basic.args = {
-  columnDataList: [
-    { name: 'name', displayTitle: 'Name', className: '' },
-    { name: 'namespace', displayTitle: 'Namespace', className: '' },
-    { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
-    { name: 'externalIP', displayTitle: 'External IP', className: '', customValue: customValueSample },
-  ],
-  kindObj: ServiceModel,
 };

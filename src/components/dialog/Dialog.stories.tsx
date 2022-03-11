@@ -18,9 +18,17 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<typeof BasicDialog> = (args) => <BasicDialog {...args} />;
-
-export const Basic = Template.bind({});
+export const Basic: ComponentStory<typeof BasicDialog> = (props) => (
+  <BasicDialog
+    {...props}
+    isOpen={true}
+    title="Delete Resource Dialog"
+    saveButtonText="Confirm"
+    cancelButtonText="Cancel"
+    size={DialogSize.medium}
+    typeOfContentList={[ContentsType['string']]}
+  />
+);
 
 Basic.args = {
   isOpen: true,
@@ -31,14 +39,17 @@ Basic.args = {
   typeOfContentList: [ContentsType['string']],
 };
 
-export const DeleteResource: ComponentStory<typeof DeleteResourceDialog> = (args) => <DeleteResourceDialog {...args} />;
-
-DeleteResource.args = {
-  isOpen: true,
-  title: 'Delete Resource Dialog',
-  saveButtonText: 'Confirm',
-  cancelButtonText: 'Cancel',
-  resourceName: 'podName_01',
-  namespaceName: 'namespaceName_01',
-  size: DialogSize.medium,
-};
+export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResourceDialog> = (
+  props,
+) => (
+  <DeleteResourceDialog
+    {...props}
+    isOpen={true}
+    title="Delete Resource Dialog"
+    saveButtonText="Confirm"
+    cancelButtonText="Cancel"
+    resourceName="podName_01"
+    namespaceName="namespaceName_01"
+    size={DialogSize.medium}
+  />
+);
