@@ -3,6 +3,7 @@ import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Dialog from '@mui/material/Dialog';
 import BasicDialog, { DialogSize, ContentsType } from './BasicDialog';
 import DeleteResourceDialog from './DeleteResourceDialog';
+import { ServiceModel } from '../../models';
 
 export default {
   title: 'Component/Dialog',
@@ -18,27 +19,47 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-const Template: ComponentStory<typeof BasicDialog> = (args) => <BasicDialog {...args} />;
-
-export const Basic = Template.bind({});
+export const Basic: ComponentStory<typeof BasicDialog> = ({
+  isOpen,
+  title,
+  saveButtonText,
+  cancelButtonText,
+  size,
+  typeOfContentList,
+  ...rest
+}) => (
+  <BasicDialog
+    {...rest}
+    isOpen={isOpen}
+    title={title}
+    saveButtonText={saveButtonText}
+    cancelButtonText={cancelButtonText}
+    size={size}
+    typeOfContentList={typeOfContentList}
+  />
+);
 
 Basic.args = {
   isOpen: true,
-  title: 'Basic Dialog',
-  saveButtonText: 'Save',
+  title: 'Delete Resource Dialog',
+  saveButtonText: 'Confirm',
   cancelButtonText: 'Cancel',
   size: DialogSize.medium,
   typeOfContentList: [ContentsType['string']],
 };
 
-export const DeleteResource: ComponentStory<typeof DeleteResourceDialog> = (args) => <DeleteResourceDialog {...args} />;
-
-DeleteResource.args = {
-  isOpen: true,
-  title: 'Delete Resource Dialog',
-  saveButtonText: 'Confirm',
-  cancelButtonText: 'Cancel',
-  resourceName: 'podName_01',
-  namespaceName: 'namespaceName_01',
-  size: DialogSize.medium,
-};
+export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResourceDialog> = (
+  props,
+) => (
+  <DeleteResourceDialog
+    {...props}
+    isOpen={true}
+    title="Delete Resource Dialog"
+    saveButtonText="Confirm"
+    cancelButtonText="Cancel"
+    resourceName="podName_01"
+    namespaceName="namespaceName_01"
+    size={DialogSize.medium}
+    kindObj={ServiceModel}
+  />
+);
