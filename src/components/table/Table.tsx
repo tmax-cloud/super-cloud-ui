@@ -1,5 +1,4 @@
 import * as React from 'react';
-import * as _ from 'lodash-es';
 import { Table as MuiTable } from '@mui/material';
 import TableHead from './TableHead';
 import TableBody from './TableBody';
@@ -44,6 +43,7 @@ export interface TableItemProps {
   className: string;
   ref?: string; // 키 이름이 뭔가 맘에 안듬... 좋은 게 생각안남..
   customValue?: any;
+  customKebabItems?: any[];
 }
 
 export default Table;

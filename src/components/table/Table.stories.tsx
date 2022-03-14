@@ -17,9 +17,9 @@ export default {
   },
 } as ComponentMeta<typeof Table>;
 
-const Template: ComponentStory<typeof Table> = (args) => <Table {...args} />;
-
-export const Basic = Template.bind({});
+export const Basic: ComponentStory<typeof Table> = ({ columnDataList, kindObj, ...rest }) => (
+  <Table {...rest} columnDataList={columnDataList} kindObj={kindObj} />
+);
 
 const customValueSample = (item: any) => {
   if (item.spec.type !== 'LoadBalancer') {
@@ -33,7 +33,13 @@ Basic.args = {
     { name: 'name', displayTitle: 'Name', className: '' },
     { name: 'namespace', displayTitle: 'Namespace', className: '' },
     { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
-    { name: 'externalIP', displayTitle: 'External IP', className: '', customValue: customValueSample },
+    {
+      name: 'externalIP',
+      displayTitle: 'External IP',
+      className: '',
+      customValue: customValueSample,
+    },
+    { name: 'kebab', displayTitle: '', className: '' },
   ],
   kindObj: ServiceModel,
 };

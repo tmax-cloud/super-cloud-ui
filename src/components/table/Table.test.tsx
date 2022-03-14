@@ -26,7 +26,7 @@ describe('테이블 테스트', () => {
 
   test('빈 배열 왔을 때 `해당 리소스를 찾을 수 없습니다.` 잘 뜨는지 테스트', async () => {
     server.use(
-      rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
+      rest.get('/api/kubernetes/api/v1/namespaces/test_ns/services', (req, res, ctx) => {
         return res.once(ctx.status(200), ctx.json({ items: [] }));
       }),
     );
@@ -39,7 +39,7 @@ describe('테이블 테스트', () => {
 
   test('서버 에러 404일 때 errorMsg 잘 뜨는지 테스트', async () => {
     server.use(
-      rest.get('/api/kubernetes/api/v1/services', (req, res, ctx) => {
+      rest.get('/api/kubernetes/api/v1/namespaces/test_ns/services', (req, res, ctx) => {
         return res.once(ctx.status(404));
       }),
     );

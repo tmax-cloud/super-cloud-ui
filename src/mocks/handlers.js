@@ -1,7 +1,7 @@
 import { rest } from 'msw';
 
 export const handlers = [
-  rest.get('/api/kubernetes/api/v1/services/', (req, res, ctx) => {
+  rest.get('/api/kubernetes/api/v1/namespaces/test_ns/services', (req, res, ctx) => {
     return res(
       ctx.json({
         kind: 'ServiceList',
@@ -259,6 +259,24 @@ export const handlers = [
             },
           },
         ],
+      }),
+    );
+  }),
+  rest.delete(`/api/kubernetes/api/v1/namespaces/test_ns/services/:resourceName`, (req, res, ctx) => {
+    const { resourceName } = req.params;
+    //[TODO] 추후에 개발자도구 키고 했을 때 서버에러 발생하는 이슈 해결해야함.
+    console.log('개발자도구 키고 하면 에러나서 일단 넣어놈 - 잘되는 거임!!', resourceName, req.body);
+    return res(
+      ctx.json({
+        kind: 'Status',
+        apiVersion: 'v1',
+        metadata: {},
+        status: 'Success',
+        details: {
+          name: 'test',
+          kind: 'services',
+          uid: '1565ee0a-0623-480d-bcdb-73eacd4cdc86',
+        },
       }),
     );
   }),
