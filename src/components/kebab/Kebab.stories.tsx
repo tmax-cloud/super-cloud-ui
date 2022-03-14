@@ -1,8 +1,6 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
-import Dialog from '@mui/material/Dialog';
 import Kebab from './Kebab';
-import { ServiceModel } from '../../models';
 
 export default {
   title: 'Component/Kebab',
