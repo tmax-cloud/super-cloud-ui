@@ -21,7 +21,7 @@ export enum DialogSize {
   large = 'large',
 }
 
-type DeleteResourceDialogProps = DialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
+export type DeleteResourceDialogProps = DialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
 
 const dialogSize = {
   small: css`

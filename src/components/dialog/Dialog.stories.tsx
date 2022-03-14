@@ -1,7 +1,7 @@
 import React from 'react';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import Dialog from '@mui/material/Dialog';
-import BasicDialog, { DialogSize, ContentsType } from './BasicDialog';
+import BasicDialog, { DialogSize } from './BasicDialog';
 import DeleteResourceDialog from './DeleteResourceDialog';
 import { ServiceModel } from '../../models';
 
@@ -25,7 +25,6 @@ export const Basic: ComponentStory<typeof BasicDialog> = ({
   saveButtonText,
   cancelButtonText,
   size,
-  typeOfContentList,
   ...rest
 }) => (
   <BasicDialog
@@ -35,17 +34,15 @@ export const Basic: ComponentStory<typeof BasicDialog> = ({
     saveButtonText={saveButtonText}
     cancelButtonText={cancelButtonText}
     size={size}
-    typeOfContentList={typeOfContentList}
   />
 );
 
 Basic.args = {
   isOpen: true,
-  title: 'Delete Resource Dialog',
+  title: 'Basic Resource Dialog',
   saveButtonText: 'Confirm',
   cancelButtonText: 'Cancel',
   size: DialogSize.medium,
-  typeOfContentList: [ContentsType['string']],
 };
 
 export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResourceDialog> = (

@@ -4,11 +4,9 @@ import { css } from '@emotion/react';
 import * as React from 'react';
 
 import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export enum DialogSize {
@@ -27,11 +25,8 @@ export enum ContentsType {
 export interface DialogProps {
   isOpen: boolean;
   title: string;
-  subTitle: string;
   saveButtonText: string;
   cancelButtonText: string;
-  numberOfContents: number;
-  typeOfContentList: ContentsType[];
   onClose?: () => void;
   size?: DialogSize;
 }
@@ -58,7 +53,7 @@ const dialogSize = {
 };
 
 export default function BasicDialog(props: DialogProps) {
-  const { isOpen, title, subTitle, saveButtonText, cancelButtonText, onClose, size, typeOfContentList } = props;
+  const { isOpen, title, saveButtonText, cancelButtonText, onClose, size } = props;
 
   const [open, setOpen] = React.useState(isOpen);
 
@@ -66,32 +61,12 @@ export default function BasicDialog(props: DialogProps) {
     isOpen ? setOpen(true) : setOpen(false);
   }, [isOpen]);
 
-  const contentList = ((typeOfContentList: ContentsType[]) => {
-    const result: JSX.Element[] = [];
-    typeOfContentList.forEach((contentType: ContentsType, idx: number) => {
-      switch (contentType) {
-        case 'string': {
-          result.push(<DialogContentText key={`string-content-${idx}`}>contents summary blah blah</DialogContentText>);
-          break;
-        }
-        case 'textInput': {
-          result.push(<TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" key={`string-content-${idx}`} />);
-          break;
-        }
-      }
-    });
-    return result;
-  })(typeOfContentList);
-
   return (
     <div>
       <Dialog css={dialogSize[size as DialogSize]} open={open} onClose={onClose}>
         <DialogTitle>{title}</DialogTitle>
         <DialogContent>
-          <DialogContentText>{subTitle}</DialogContentText>
-          {/** you can customize this area*/}
-          {/* <TextField autoFocus margin="dense" label="Contents" type="contents" fullWidth variant="standard" /> */}
-          {!!contentList.length && contentList.map((cur) => cur)}
+          <span>Basic Dialog contents.... blah blah</span>
         </DialogContent>
         <DialogActions>
           <Button onClick={onClose} variant="outlined">
