@@ -24,7 +24,7 @@ export enum ContentsType {
   numberSpinner = 'numberSpinner',
   listView = 'listView',
 }
-interface BasicDialogProps {
+export interface DialogProps {
   isOpen: boolean;
   title: string;
   subTitle: string;
@@ -57,7 +57,7 @@ const dialogSize = {
   `,
 };
 
-export default function BasicDialog(props: BasicDialogProps) {
+export default function BasicDialog(props: DialogProps) {
   const { isOpen, title, subTitle, saveButtonText, cancelButtonText, onClose, size, typeOfContentList } = props;
 
   const [open, setOpen] = React.useState(isOpen);

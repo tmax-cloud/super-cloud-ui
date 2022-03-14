@@ -2,6 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
+import { DialogProps } from './BasicDialog';
 
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -10,7 +11,6 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import handleRequest from '../../apis/handleRequest';
 import { K8sKind, RequestType } from '../../types';
@@ -20,16 +20,8 @@ export enum DialogSize {
   medium = 'medium',
   large = 'large',
 }
-interface DeleteResourceDialogProps {
-  isOpen: boolean;
-  title: string;
-  saveButtonText: string;
-  cancelButtonText: string;
-  resourceName: string;
-  namespaceName?: string;
-  size?: DialogSize;
-  kindObj: K8sKind;
-}
+
+type DeleteResourceDialogProps = DialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
 
 const dialogSize = {
   small: css`
