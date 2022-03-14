@@ -17,23 +17,8 @@ export default {
   },
 } as ComponentMeta<typeof Table>;
 
-export const Basic: ComponentStory<typeof Table> = (props) => (
-  <Table
-    {...props}
-    columnDataList={[
-      { name: 'name', displayTitle: 'Name', className: '' },
-      { name: 'namespace', displayTitle: 'Namespace', className: '' },
-      { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
-      {
-        name: 'externalIP',
-        displayTitle: 'External IP',
-        className: '',
-        customValue: customValueSample,
-      },
-      { name: 'kebab', displayTitle: '', className: '' },
-    ]}
-    kindObj={ServiceModel}
-  />
+export const Basic: ComponentStory<typeof Table> = ({ columnDataList, kindObj, ...rest }) => (
+  <Table {...rest} columnDataList={columnDataList} kindObj={kindObj} />
 );
 
 const customValueSample = (item: any) => {
@@ -41,4 +26,20 @@ const customValueSample = (item: any) => {
     return 'No External IP';
   }
   return _.map(item.status.loadBalancer.ingress, (i) => i.hostname || i.ip || '-');
+};
+
+Basic.args = {
+  columnDataList: [
+    { name: 'name', displayTitle: 'Name', className: '' },
+    { name: 'namespace', displayTitle: 'Namespace', className: '' },
+    { name: 'type', displayTitle: 'Type', className: '', ref: 'spec.type' },
+    {
+      name: 'externalIP',
+      displayTitle: 'External IP',
+      className: '',
+      customValue: customValueSample,
+    },
+    { name: 'kebab', displayTitle: '', className: '' },
+  ],
+  kindObj: ServiceModel,
 };

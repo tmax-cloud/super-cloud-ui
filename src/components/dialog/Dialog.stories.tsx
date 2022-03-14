@@ -19,17 +19,35 @@ export default {
   },
 } as ComponentMeta<typeof Dialog>;
 
-export const Basic: ComponentStory<typeof BasicDialog> = (props) => (
+export const Basic: ComponentStory<typeof BasicDialog> = ({
+  isOpen,
+  title,
+  saveButtonText,
+  cancelButtonText,
+  size,
+  typeOfContentList,
+  ...rest
+}) => (
   <BasicDialog
-    {...props}
-    isOpen={true}
-    title="Delete Resource Dialog"
-    saveButtonText="Confirm"
-    cancelButtonText="Cancel"
-    size={DialogSize.medium}
-    typeOfContentList={[ContentsType['string']]}
+    {...rest}
+    isOpen={isOpen}
+    title={title}
+    saveButtonText={saveButtonText}
+    cancelButtonText={cancelButtonText}
+    size={size}
+    typeOfContentList={typeOfContentList}
   />
 );
+
+Basic.args = {
+  isOpen: true,
+  title: 'Delete Resource Dialog',
+  saveButtonText: 'Confirm',
+  cancelButtonText: 'Cancel',
+  size: DialogSize.medium,
+  typeOfContentList: [ContentsType['string']],
+};
+
 export const DeleteResourceDialogComponent: ComponentStory<typeof DeleteResourceDialog> = (
   props,
 ) => (
