@@ -3,11 +3,7 @@
 import { css } from '@emotion/react';
 import * as React from 'react';
 
-import Button from '@mui/material/Button';
-import Dialog from '@mui/material/Dialog';
-import DialogActions from '@mui/material/DialogActions';
-import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
+import { default as MuiDialog } from '@mui/material/Dialog';
 
 export enum DialogSize {
   small = 'small',
@@ -28,7 +24,7 @@ export interface DialogProps {
   title: string;
   saveButtonText: string;
   cancelButtonText: string;
-  onClose?: () => void;
+  SubComponent: any;
   size?: DialogSize;
 }
 
@@ -53,8 +49,8 @@ const dialogSize = {
   `,
 };
 
-export default function BasicDialog(props: DialogProps) {
-  const { isOpen, setDialogOpen, title, saveButtonText, cancelButtonText, size } = props;
+export default function Dialog(props: DialogProps) {
+  const { isOpen, SubComponent, setDialogOpen, size } = props;
 
   const onClose = () => {
     setDialogOpen(false);
@@ -62,20 +58,9 @@ export default function BasicDialog(props: DialogProps) {
 
   return (
     <div>
-      <Dialog css={dialogSize[size as DialogSize]} open={isOpen} onClose={onClose}>
-        <DialogTitle>{title}</DialogTitle>
-        <DialogContent>
-          <span>Basic Dialog contents.... blah blah</span>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={onClose} variant="outlined">
-            {cancelButtonText}
-          </Button>
-          <Button onClick={onClose} variant="contained">
-            {saveButtonText}
-          </Button>
-        </DialogActions>
-      </Dialog>
+      <MuiDialog css={dialogSize[size as DialogSize]} open={isOpen} onClose={onClose}>
+        <SubComponent {...props} />
+      </MuiDialog>
     </div>
   );
 }

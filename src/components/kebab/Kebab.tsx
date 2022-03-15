@@ -3,13 +3,13 @@ import { Menu, MenuItem, Button } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteResourceDialog from '../dialog/DeleteResourceDialog';
 import { ServiceModel } from '../../models';
-import { DialogSize } from '../dialog/BasicDialog';
+import Dialog, { DialogSize } from '../dialog';
 
 function Kebab(props: KebabProps) {
-  const { kebabItems } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [dialogAction, selectDialogAction] = React.useState<React.ReactElement>(<></>);
+  const [isDialogOpen, setDialogOpen] = React.useState(false);
   const open = Boolean(anchorEl);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -31,9 +31,9 @@ function Kebab(props: KebabProps) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={() => selectDialogAction(<DeleteResourceDialog {...props} isOpen={true} title="Delete Resource Dialog" saveButtonText="Confirm" cancelButtonText="Cancel" resourceName="podName_01" namespaceName="namespaceName_01" size={DialogSize.medium} kindObj={ServiceModel} />)}>Delete Resource</MenuItem>
+        <MenuItem onClick={() => setDialogOpen(true)}>Delete Resource</MenuItem>
       </Menu>
-      {dialogAction}
+      <Dialog {...props} SubComponent={DeleteResourceDialog} isOpen={isDialogOpen} setDialogOpen={setDialogOpen} title="Delete Resource Dialog" saveButtonText="Confirm" cancelButtonText="Cancel" resourceName="podName_01" namespaceName="namespaceName_01" size={DialogSize.medium} kindObj={ServiceModel} />
     </>
   );
 }
