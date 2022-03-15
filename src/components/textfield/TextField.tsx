@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { styled, Box, TextField as MuiTextField, Theme, InputAdornment } from '@mui/material';
+import { styled, Box, TextField as MuiTextField, Theme, InputAdornment, OutlinedInputProps } from '@mui/material';
 import { KEYBOARD_SHORTCUTS, useDocumentListener } from '../../hooks/document-listener';
 import ThemeWrapper from '../../themes/ThemeWrapper';
 import Error from '../../assets/images/error.svg';
@@ -51,7 +51,7 @@ const StyledTextField = styled(MuiTextField, {
     backgroundPosition: ownerState.error && 'calc(100% - 0.5rem) center',
     backgroundSize: ownerState.error && '1rem 1rem',
     backgroundRepeat: ownerState.error && 'no-repeat',
-    padding: 0,
+    padding: '0 !important',
     '& fieldset': {
       border: 'none',
       padding: 0,
@@ -70,9 +70,9 @@ const StyledTextField = styled(MuiTextField, {
     },
   },
   '& .MuiInputBase-input': {
-    padding: `${theme.spaces.textfield.paddingY} ${theme.spaces.textfield.paddingX}`,
-    paddingBottom: ownerState.error ? theme.spaces.textfield.errorPaddingBottom : theme.spaces.textfield.paddingY,
-    paddingRight: ownerState.error ? theme.spaces.textfield.errorPaddingRight : theme.spaces.textfield.paddingX,
+    padding: `${theme.spaces.textfield.paddingY} ${theme.spaces.textfield.paddingX} !important`,
+    paddingBottom: `${ownerState.error ? theme.spaces.textfield.errorPaddingBottom : theme.spaces.textfield.paddingY} !important`,
+    paddingRight: `${ownerState.error ? theme.spaces.textfield.errorPaddingRight : theme.spaces.textfield.paddingX} !important`,
     color: theme.palette.global.color100,
     fontSize: theme.typography.textfield.fontSize,
     lineHeight: 1.5,
@@ -91,7 +91,7 @@ const StyledTextField = styled(MuiTextField, {
 }));
 
 const TextField = (props: TextFieldProps) => {
-  const { readOnly, enableShortcut, ...rest } = props;
+  const { readOnly, enableShortcut, InputProps, ...rest } = props;
   const { ref } = useDocumentListener<HTMLDivElement>();
   const [visible, setVisible] = React.useState(true);
   return (
@@ -103,6 +103,7 @@ const TextField = (props: TextFieldProps) => {
         onFocusCapture={() => setVisible(false)}
         onBlurCapture={() => setVisible(true)}
         InputProps={{
+          ...InputProps,
           readOnly,
           endAdornment:
             enableShortcut && visible ? (
@@ -148,6 +149,10 @@ export interface TextFieldProps {
    * The id of the `input` element.
    */
   id?: string;
+  /**
+   * Props applied to the Input element.
+   */
+  InputProps?: Partial<OutlinedInputProps>;
   /**
    * Name attribute of the `input` element.
    */
