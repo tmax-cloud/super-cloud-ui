@@ -29,6 +29,14 @@ export const Deletable: ComponentStory<typeof Chip> = (props) => {
   );
 };
 
+Deletable.decorators = [
+  (Story) => (
+    <div style={{ margin: '5em' }}>
+      <Story />
+    </div>
+  ),
+];
+
 Deletable.args = {
   label: 'Really long chip that goes on and on',
 };

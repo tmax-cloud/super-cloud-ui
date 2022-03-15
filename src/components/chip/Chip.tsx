@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Chip as MuiChip, IconButton, styled, SxProps, Theme } from '@mui/material';
 import ThemeWrapper from '../../themes/ThemeWrapper';
+import Tooltip from '../tooltip/Tooltip';
 
 const DeleteButton = () => {
   return (
@@ -32,9 +33,22 @@ const StyledChip = styled(MuiChip)(({ theme }) => ({
 }));
 
 const Chip = (props: ChipProps) => {
+  const { label, ...rest } = props;
+  const ref = React.useRef<HTMLDivElement>(null);
+  const [showTooltip, setShowTooltip] = React.useState(false);
+
+  React.useEffect(() => {
+    if (ref.current) {
+      const span = ref.current.firstElementChild as HTMLDivElement;
+      setShowTooltip(span.offsetWidth < span.scrollWidth);
+    }
+  }, [ref]);
+
   return (
     <ThemeWrapper>
-      <StyledChip deleteIcon={<DeleteButton />} variant="outlined" {...props} />
+      <Tooltip content={showTooltip && label}>
+        <StyledChip ref={ref} label={label} deleteIcon={<DeleteButton />} variant="outlined" {...rest} />
+      </Tooltip>
     </ThemeWrapper>
   );
 };
