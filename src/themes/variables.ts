@@ -37,6 +37,12 @@ export const colors = {
     readonlyBackground: '#f0f0f0',
     errorBorderBottom: '#c9190b',
   },
+  chip: {
+    text: '#151515',
+    background: '#fff',
+    border: '#151515',
+    icon: '#737679',
+  },
 };
 
 export const typography = {
@@ -55,6 +61,9 @@ export const typography = {
   },
   textfield: {
     fontSize: '1rem',
+  },
+  chip: {
+    fontSize: '0.75rem',
   },
 };
 
@@ -80,6 +89,10 @@ export const spaces = {
     paddingY: 'calc(0.375rem - 1px)',
     errorPaddingBottom: 'calc(0.375rem - 2px)',
     errorPaddingRight: '2rem',
+  },
+  chip: {
+    paddingX: '0.5rem',
+    paddingY: '0.25rem',
   },
 };
 

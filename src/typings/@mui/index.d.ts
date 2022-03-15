@@ -46,6 +46,12 @@ declare module '@mui/material/styles/createPalette' {
       readonlyBackground: string;
       errorBorderBottom: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
   }
   interface PaletteOptions {
     global: {
@@ -84,6 +90,12 @@ declare module '@mui/material/styles/createPalette' {
       readonlyBackground: string;
       errorBorderBottom: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
   }
 }
 
@@ -94,11 +106,13 @@ declare module '@mui/material/styles/createTypography' {
     global: TypographyStyle & GlobalFontStyle;
     tooltip: TypographyStyle;
     textfield: TypographyStyle;
+    chip: TypographyStyle;
   }
   interface TypographyOptions {
     global?: TypographyStyleOptions & GlobalFontStyle;
     tooltip?: TypographyStyleOptions;
     textfield?: TypographyStyleOptions;
+    chip?: TypographyStyle;
   }
 }
 
@@ -135,6 +149,10 @@ export interface Space {
     paddingY: string;
     errorPaddingBottom: string;
     errorPaddingRight: string;
+  };
+  chip: {
+    paddingX: string;
+    paddingY: string;
   };
 }
 

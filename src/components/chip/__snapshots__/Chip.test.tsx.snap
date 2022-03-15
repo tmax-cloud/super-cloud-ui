@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip renders correctly 1`] = `
+<div>
+  <div
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-76lqxq-MuiChip-root"
+  >
+    <span
+      class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+    >
+      Chip 1
+    </span>
+  </div>
+</div>
+`;
