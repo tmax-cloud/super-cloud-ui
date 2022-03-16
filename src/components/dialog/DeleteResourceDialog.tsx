@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-import { DialogProps } from './index';
+import { CommonDialogProps } from './index';
 
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
@@ -20,7 +20,7 @@ export enum DialogSize {
   large = 'large',
 }
 
-export type DeleteResourceDialogProps = DialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
+export type DeleteResourceDialogProps = CommonDialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
 
 const alert = {
   error: css`
@@ -32,7 +32,7 @@ const alert = {
 };
 
 export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
-  const { kindObj, setDialogOpen, title, resourceName, namespaceName, saveButtonText, cancelButtonText } = props;
+  const { kindObj, setDialogOpen, resourceName, namespaceName } = props;
 
   const [error, setError] = React.useState<string>('');
 
@@ -60,7 +60,7 @@ export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
     <>
       <DialogTitle>
         <ReportProblemIcon color="warning" fontSize="large" />
-        {title}
+        Delete Resource Dialog
       </DialogTitle>
       <DialogContent>
         <DialogContentText>{deleteResourceMsg(resourceName, namespaceName)}</DialogContentText>
@@ -72,10 +72,10 @@ export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
       )}
       <DialogActions>
         <Button onClick={onClose} variant="outlined">
-          {cancelButtonText}
+          Cancel
         </Button>
         <Button onClick={onDeleteClick} variant="contained" color="error">
-          {saveButtonText}
+          Confirm
         </Button>
       </DialogActions>
     </>

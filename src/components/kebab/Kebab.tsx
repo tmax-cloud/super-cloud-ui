@@ -33,7 +33,7 @@ function Kebab(props: KebabProps) {
       >
         <MenuItem onClick={() => setDialogOpen(true)}>Delete Resource</MenuItem>
       </Menu>
-      <Dialog {...props} SubComponent={DeleteResourceDialog} isOpen={isDialogOpen} setDialogOpen={setDialogOpen} title="Delete Resource Dialog" saveButtonText="Confirm" cancelButtonText="Cancel" resourceName="podName_01" namespaceName="namespaceName_01" size={DialogSize.medium} kindObj={ServiceModel} />
+      <Dialog {...props} SubComponent={DeleteResourceDialog} subProps={{ resourceName: 'podName_01', namespaceName: 'namespaceName_01', kindObj: { ServiceModel } }} isOpen={isDialogOpen} setDialogOpen={setDialogOpen} size={DialogSize.medium} />
     </>
   );
 }

@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-
+import { Button } from '@mui/material';
 import { default as MuiDialog } from '@mui/material/Dialog';
 
 export enum DialogSize {
@@ -18,14 +18,19 @@ export enum ContentsType {
   numberSpinner = 'numberSpinner',
   listView = 'listView',
 }
-export interface DialogProps {
+export interface CommonDialogProps {
   isOpen: boolean;
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  title: string;
-  saveButtonText: string;
-  cancelButtonText: string;
+  title?: string;
+  saveButtonText?: string;
+  cancelButtonText?: string;
   SubComponent: any;
+  subProps: any;
   size?: DialogSize;
+}
+
+export interface DialogProps extends CommonDialogProps {
+  [key: string]: any;
 }
 
 const dialogSize = {
@@ -64,3 +69,17 @@ export default function Dialog(props: DialogProps) {
     </div>
   );
 }
+
+// storybook이랑 tdd용
+export function DialogOpenButton(props: DialogOpenButtonProps) {
+  const { subProps, SubComponent } = props;
+  const [isOpen, setOpen] = React.useState(false);
+  return (
+    <>
+      <Button onClick={() => setOpen(true)}> Open Dialog</Button>
+      <Dialog {...props} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
+    </>
+  );
+}
+
+export type DialogOpenButtonProps = Omit<DialogProps, 'isOpen' | 'setOpen'>;
