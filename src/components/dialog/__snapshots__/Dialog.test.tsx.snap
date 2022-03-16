@@ -29,7 +29,7 @@ exports[`삭제 다이알로그 테스트 테이블 스냅샷 테스트 1`] = `
     <p
       class="MuiDialogContentText-root MuiTypography-root MuiTypography-body1 css-qfso29-MuiTypography-root-MuiDialogContentText-root"
     >
-      Are you sure you want to delete podName_01 in namespace namespaceName_01?
+      Are you sure you want to delete undefined?
     </p>
   </div>
   

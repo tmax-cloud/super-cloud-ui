@@ -13,7 +13,8 @@ function setup() {
 describe('삭제 다이알로그 테스트', () => {
   test('테이블 스냅샷 테스트', async () => {
     setup();
-
+    const openDialogBtn = screen.getByRole('button');
+    userEvent.click(openDialogBtn);
     const dialog = await screen.findByRole('dialog');
     expect(dialog).toMatchSnapshot();
   });
@@ -25,6 +26,8 @@ describe('삭제 다이알로그 테스트', () => {
       }),
     );
     setup();
+    const openDialogBtn = screen.getByRole('button');
+    userEvent.click(openDialogBtn);
 
     const confirmButton = screen.getByText('Confirm');
     userEvent.click(confirmButton);
