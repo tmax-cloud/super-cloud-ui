@@ -1,6 +1,7 @@
 export * from './autocomplete';
 export { default as Button } from './button/Button';
 export { default as Chip } from './chip/Chip';
+export { default as ChipGroup } from './chip-group/ChipGroup';
 export { SimpleSelect } from './select/Select';
 export { MultipleSelect } from './select/MultipleSelect';
 export { default as Table } from './table/Table';
