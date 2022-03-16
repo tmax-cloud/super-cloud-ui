@@ -3,7 +3,7 @@
 exports[`TextField renders correctly 1`] = `
 <div>
   <div
-    class="MuiFormControl-root MuiTextField-root css-a4yz8l-MuiFormControl-root-MuiTextField-root"
+    class="MuiFormControl-root MuiTextField-root css-1qpw28-MuiFormControl-root-MuiTextField-root"
   >
     <div
       class="MuiOutlinedInput-root MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root"
