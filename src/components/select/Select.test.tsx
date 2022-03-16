@@ -29,18 +29,4 @@ describe('Select', () => {
     );
     expect(container.querySelector('label')).toHaveTextContent('Select');
   });
-  /*test('renders correctly if option type is label', () => {
-    render(<Autocomplete open options={['one', 'two']} renderLabelOption renderInput={(params) => <TextField {...params} />} />);
-    const listbox = screen.getByRole('listbox');
-    const options = screen.getAllByRole('option');
-    // check option size
-    expect(options).toHaveLength(2);
-    // check listbox contains options
-    options.forEach((option) => {
-      expect(listbox).toContainElement(option);
-    });
-    // check button style
-    const button = screen.getAllByRole('button')[0];
-    expect(button).toHaveStyle('color: #8476d1');
-  });*/
 });
