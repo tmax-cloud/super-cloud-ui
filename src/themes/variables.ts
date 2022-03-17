@@ -21,6 +21,12 @@ export const colors = {
     black400: '#8a8d90',
     black500: '#737679',
   },
+  chip: {
+    text: '#151515',
+    background: '#fff',
+    border: '#151515',
+    icon: '#737679',
+  },
   tooltip: {
     content: '#fff',
     contentBg: '#151515',
@@ -37,11 +43,15 @@ export const colors = {
     readonlyBackground: '#f0f0f0',
     errorBorderBottom: '#c9190b',
   },
-  chip: {
-    text: '#151515',
-    background: '#fff',
-    border: '#151515',
-    icon: '#737679',
+  select: {
+    color: '#151515',
+    disabledBg: '#f0f0f0',
+    border: '#f0f0f0',
+    borderBottom: '#8a8d90',
+    activeBorderBottom: '#06c',
+    hoverBorderBottom: '#06c',
+    focusBorderBottom: '#06c',
+    itemHoverBg: '#f0f0f0',
   },
 };
 
@@ -56,14 +66,17 @@ export const typography = {
     fontSize3xl: '1.75rem',
     fontSize4xl: '2.25rem',
   },
+  chip: {
+    fontSize: '0.75rem',
+  },
   tooltip: {
     fontSize: '0.875rem',
   },
   textfield: {
     fontSize: '1rem',
   },
-  chip: {
-    fontSize: '0.75rem',
+  select: {
+    fontSize: '1rem',
   },
 };
 
@@ -78,6 +91,10 @@ export const spaces = {
     spacer3xl: '4rem',
     spacer4xl: '5rem',
   },
+  chip: {
+    paddingX: '0.5rem',
+    paddingY: '0.25rem',
+  },
   tooltip: {
     contentPaddingTop: '1rem',
     contentPaddingRight: '1.5rem',
@@ -90,9 +107,9 @@ export const spaces = {
     errorPaddingBottom: 'calc(0.375rem - 2px)',
     errorPaddingRight: '2rem',
   },
-  chip: {
+  select: {
     paddingX: '0.5rem',
-    paddingY: '0.25rem',
+    paddingY: '0.475rem',
   },
 };
 

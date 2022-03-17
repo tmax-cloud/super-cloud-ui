@@ -32,7 +32,6 @@ Textfield.args = {
     'Option 8',
     'Option 9',
   ],
-  renderInput: (params) => <TextField placeholder="Type something..." {...params} />,
   sx: { width: 300 },
 };
 
@@ -66,3 +65,44 @@ TextfieldWithLabelList.args = {
 };
 
 TextfieldWithLabelList.storyName = 'Textfield with label list';
+
+export const TextfieldWithShortcut: ComponentStory<typeof Autocomplete> = (props) => {
+  const { options, renderInput, sx, ...rest } = props;
+  return (
+    <Autocomplete
+      options={options}
+      renderInput={(params) => (
+        <TextField
+          placeholder='Press "/" to focus, and press "esc" to blur'
+          enableShortcut
+          {...params}
+        />
+      )}
+      sx={sx}
+      {...rest}
+    />
+  );
+};
+
+TextfieldWithShortcut.parameters = {
+  options: {
+    enableShortcuts: false,
+  },
+};
+
+TextfieldWithShortcut.args = {
+  options: [
+    'Option 1',
+    'Option 2',
+    'Option 3',
+    'Option 4',
+    'Option 5',
+    'Option 6',
+    'Option 7',
+    'Option 8',
+    'Option 9',
+  ],
+  sx: { width: 400 },
+};
+
+TextfieldWithShortcut.storyName = 'Textfield with shortcut';

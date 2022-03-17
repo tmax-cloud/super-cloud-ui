@@ -30,6 +30,12 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -46,11 +52,15 @@ declare module '@mui/material/styles/createPalette' {
       readonlyBackground: string;
       errorBorderBottom: string;
     };
-    chip: {
-      text: string;
-      background: string;
+    select: {
+      color: string;
+      disabledBg: string;
       border: string;
-      icon: string;
+      borderBottom: string;
+      activeBorderBottom: string;
+      hoverBorderBottom: string;
+      focusBorderBottom: string;
+      itemHoverBg: string;
     };
   }
   interface PaletteOptions {
@@ -74,6 +84,12 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -90,11 +106,15 @@ declare module '@mui/material/styles/createPalette' {
       readonlyBackground: string;
       errorBorderBottom: string;
     };
-    chip: {
-      text: string;
-      background: string;
+    select: {
+      color: string;
+      disabledBg: string;
       border: string;
-      icon: string;
+      borderBottom: string;
+      activeBorderBottom: string;
+      hoverBorderBottom: string;
+      focusBorderBottom: string;
+      itemHoverBg: string;
     };
   }
 }
@@ -104,15 +124,17 @@ declare module '@mui/material/styles/createTypography' {
 
   interface Typography {
     global: TypographyStyle & GlobalFontStyle;
+    chip: TypographyStyle;
     tooltip: TypographyStyle;
     textfield: TypographyStyle;
-    chip: TypographyStyle;
+    select: TypographyStyle;
   }
   interface TypographyOptions {
     global?: TypographyStyleOptions & GlobalFontStyle;
+    chip?: TypographyStyle;
     tooltip?: TypographyStyleOptions;
     textfield?: TypographyStyleOptions;
-    chip?: TypographyStyle;
+    select?: TypographyStyleOptions;
   }
 }
 
@@ -138,6 +160,10 @@ export interface Space {
     spacer3xl: string;
     spacer4xl: string;
   };
+  chip: {
+    paddingX: string;
+    paddingY: string;
+  };
   tooltip: {
     contentPaddingTop: string;
     contentPaddingRight: string;
@@ -150,7 +176,7 @@ export interface Space {
     errorPaddingBottom: string;
     errorPaddingRight: string;
   };
-  chip: {
+  select: {
     paddingX: string;
     paddingY: string;
   };
