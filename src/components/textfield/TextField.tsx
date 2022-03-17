@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { styled, TextField as MuiTextField, Theme } from '@mui/material';
+import { styled, Box, TextField as MuiTextField, Theme, InputAdornment, OutlinedInputProps } from '@mui/material';
+import { KEYBOARD_SHORTCUTS, useDocumentListener } from '../../hooks/document-listener';
 import ThemeWrapper from '../../themes/ThemeWrapper';
 import Error from '../../assets/images/error.svg';
 
@@ -11,6 +12,26 @@ const getHoverBorderBottomColor = (theme: Theme, ownerState: TextFieldProps) => 
     return theme.palette.textfield.errorBorderBottom;
   }
   return theme.palette.textfield.hoverBorderBottom;
+};
+
+const KeyboardFocusHint = () => {
+  return (
+    <Box sx={{ width: 29, height: 29, lineHeight: '1.8em', textAlign: 'center' }}>
+      <kbd
+        style={{
+          fontFamily: 'Menlo,Monaco,Consolas,monospace',
+          padding: '2px 4px',
+          fontSize: '90%',
+          color: '#72767b',
+          backgroundColor: 'rgba(0,0,0,0)',
+          borderRadius: 3,
+          boxShadow: 'inset 0 0 0 1px rgb(0 0 0 / 25%)',
+        }}
+      >
+        {KEYBOARD_SHORTCUTS.focusFilterInput}
+      </kbd>
+    </Box>
+  );
 };
 
 const StyledTextField = styled(MuiTextField, {
@@ -30,7 +51,7 @@ const StyledTextField = styled(MuiTextField, {
     backgroundPosition: ownerState.error && 'calc(100% - 0.5rem) center',
     backgroundSize: ownerState.error && '1rem 1rem',
     backgroundRepeat: ownerState.error && 'no-repeat',
-    padding: 0,
+    padding: '0 !important',
     '& fieldset': {
       border: 'none',
       padding: 0,
@@ -49,9 +70,9 @@ const StyledTextField = styled(MuiTextField, {
     },
   },
   '& .MuiInputBase-input': {
-    padding: `${theme.spaces.textfield.paddingY} ${theme.spaces.textfield.paddingX}`,
-    paddingBottom: ownerState.error ? theme.spaces.textfield.errorPaddingBottom : theme.spaces.textfield.paddingY,
-    paddingRight: ownerState.error ? theme.spaces.textfield.errorPaddingRight : theme.spaces.textfield.paddingX,
+    padding: `${theme.spaces.textfield.paddingY} ${theme.spaces.textfield.paddingX} !important`,
+    paddingBottom: `${ownerState.error ? theme.spaces.textfield.errorPaddingBottom : theme.spaces.textfield.paddingY} !important`,
+    paddingRight: `${ownerState.error ? theme.spaces.textfield.errorPaddingRight : theme.spaces.textfield.paddingX} !important`,
     color: theme.palette.global.color100,
     fontSize: theme.typography.textfield.fontSize,
     lineHeight: 1.5,
@@ -70,10 +91,29 @@ const StyledTextField = styled(MuiTextField, {
 }));
 
 const TextField = (props: TextFieldProps) => {
-  const { readOnly, ...rest } = props;
+  const { readOnly, enableShortcut, InputProps, ...rest } = props;
+  const { ref } = useDocumentListener<HTMLDivElement>();
+  const [visible, setVisible] = React.useState(true);
   return (
     <ThemeWrapper>
-      <StyledTextField variant="outlined" ownerState={props} InputProps={{ readOnly }} {...rest} />
+      <StyledTextField
+        inputRef={enableShortcut ? ref : undefined}
+        variant="outlined"
+        ownerState={props}
+        onFocusCapture={() => setVisible(false)}
+        onBlurCapture={() => setVisible(true)}
+        InputProps={{
+          ...InputProps,
+          readOnly,
+          endAdornment:
+            enableShortcut && visible ? (
+              <InputAdornment position="end">
+                <KeyboardFocusHint />
+              </InputAdornment>
+            ) : undefined,
+        }}
+        {...rest}
+      />
     </ThemeWrapper>
   );
 };
@@ -94,6 +134,10 @@ export interface TextFieldProps {
    */
   disabled?: boolean;
   /**
+   * If `true`, Key `/` to focus, key `esc` to blur.
+   */
+  enableShortcut?: boolean;
+  /**
    * If `true`, the `input` will indicate an error.
    */
   error?: boolean;
@@ -105,6 +149,10 @@ export interface TextFieldProps {
    * The id of the `input` element.
    */
   id?: string;
+  /**
+   * Props applied to the Input element.
+   */
+  InputProps?: Partial<OutlinedInputProps>;
   /**
    * Name attribute of the `input` element.
    */

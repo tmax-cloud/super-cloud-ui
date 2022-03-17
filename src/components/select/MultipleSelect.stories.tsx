@@ -1,46 +1,16 @@
 import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
-
 import { MultipleSelect } from './MultipleSelect';
 
 export default {
   title: 'Component/Select/MultipleSelect',
   component: MultipleSelect,
-  argTypes: {
-    helperText: {
-      control: 'text',
-    },
-    noneOption: {
-      control: 'boolean',
-    },
-    noneText: {
-      control: 'text',
-    },
-    disabled: {
-      control: 'boolean',
-    },
-    error: {
-      control: 'boolean',
-    },
-    required: {
-      control: 'boolean',
-    },
-    width: {
-      control: 'number',
-    },
-    fullWidth: {
-      control: 'boolean',
-    },
-    autoWidth: {
-      control: 'boolean',
-    },
-    chip: {
-      control: 'boolean',
-    },
-  },
 } as ComponentMeta<typeof MultipleSelect>;
 
-const Template: ComponentStory<typeof MultipleSelect> = (args) => <MultipleSelect {...args} />;
+const Template: ComponentStory<typeof MultipleSelect> = (props) => {
+  const { label, items, helperText, ...rest } = props;
+  return <MultipleSelect label={label} items={items} helperText={helperText} {...rest} />;
+};
 
 export const Basic = Template.bind({});
 Basic.args = {
@@ -56,7 +26,6 @@ Basic.args = {
     { key: 'Bradley Wilkerson', value: 'Bradley Wilkerson' },
     { key: 'Virginia Andrews', value: 'Virginia Andrews' },
     { key: 'Kelly Snyder', value: 'Kelly Snyder' },
-    
   ],
   helperText: 'Select Name',
 };

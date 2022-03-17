@@ -45,3 +45,21 @@ Error.args = {
   error: true,
   helperText: 'Enter a value.',
 };
+
+export const Shortcut: ComponentStory<typeof TextField> = (props) => {
+  const { enableShortcut, placeholder, ...rest } = props;
+  return <TextField enableShortcut={enableShortcut} placeholder={placeholder} {...rest} />;
+};
+
+Shortcut.parameters = {
+  options: {
+    enableShortcuts: false,
+  },
+};
+
+Shortcut.args = {
+  enableShortcut: true,
+  placeholder: 'Press "/" to focus, and press "esc" to blur',
+};
+
+Shortcut.storyName = 'Focus & Blur with shortcuts';
