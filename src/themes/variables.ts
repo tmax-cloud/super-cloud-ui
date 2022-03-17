@@ -37,6 +37,16 @@ export const colors = {
     readonlyBackground: '#f0f0f0',
     errorBorderBottom: '#c9190b',
   },
+  select: {
+    color: '#151515',
+    disabledBg: '#f0f0f0',
+    border: '#f0f0f0',
+    borderBottom: '#8a8d90',
+    activeBorderBottom: '#06c',
+    hoverBorderBottom: '#06c',
+    focusBorderBottom: '#06c',
+    itemHoverBg: '#f0f0f0',
+  },
 };
 
 export const typography = {
@@ -54,6 +64,9 @@ export const typography = {
     fontSize: '0.875rem',
   },
   textfield: {
+    fontSize: '1rem',
+  },
+  select: {
     fontSize: '1rem',
   },
 };
@@ -80,6 +93,10 @@ export const spaces = {
     paddingY: 'calc(0.375rem - 1px)',
     errorPaddingBottom: 'calc(0.375rem - 2px)',
     errorPaddingRight: '2rem',
+  },
+  select: {
+    paddingX: '0.5rem',
+    paddingY: '0.475rem',
   },
 };
 
