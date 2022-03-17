@@ -76,7 +76,9 @@ export function DialogOpenButton(props: DialogOpenButtonProps) {
   const [isOpen, setOpen] = React.useState(false);
   return (
     <>
-      <Button onClick={() => setOpen(true)}> Open Dialog</Button>
+      <Button variant="contained" onClick={() => setOpen(true)}>
+        Open Dialog
+      </Button>
       <Dialog {...props} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
     </>
   );
