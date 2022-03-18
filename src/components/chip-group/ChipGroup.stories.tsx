@@ -4,7 +4,7 @@ import ChipGroup from './ChipGroup';
 import Chip from '../chip/Chip';
 
 export default {
-  title: 'Component/Chip/ChipGroup',
+  title: 'Component/ChipGroup',
   component: ChipGroup,
   decorators: [
     (Story) => (
@@ -16,19 +16,31 @@ export default {
 } as ComponentMeta<typeof ChipGroup>;
 
 export const Basic: ComponentStory<typeof ChipGroup> = (props) => {
-  const { isClosable, ...rest } = props;
-  const handleDelete = () => {
-    console.info('You clicked the delete icon.');
+  const { categoryName, children, onDeleteAll, ...rest } = props;
+
+  const [chips, setChips] = React.useState([
+    'Chip one',
+    'Chip two',
+    'Really long chip that goes on and on',
+  ]);
+
+  const handleDeleteAll = () => {
+    setChips([]);
   };
+
+  const handleDelete = (chipToDelete: string) => () => {
+    setChips((chips) => chips.filter((chip) => chip !== chipToDelete));
+  };
+
   return (
-    <ChipGroup isClosable {...rest}>
-      <Chip label="Chip one" onDelete={handleDelete} />
-      <Chip label="Chip two" onDelete={handleDelete} />
-      <Chip label="Really long chip that goes on and on" onDelete={handleDelete} />
+    <ChipGroup categoryName={categoryName} onDeleteAll={handleDeleteAll} {...rest}>
+      {chips.map((chip) => (
+        <Chip key={chip} label={chip} onDelete={handleDelete(chip)} />
+      ))}
     </ChipGroup>
   );
 };
 
 Basic.args = {
-  title: 'Category one',
+  categoryName: 'Category one has a very long name',
 };

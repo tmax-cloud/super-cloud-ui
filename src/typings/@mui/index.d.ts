@@ -36,6 +36,10 @@ declare module '@mui/material/styles/createPalette' {
       border: string;
       icon: string;
     };
+    chipGroup: {
+      background: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -90,6 +94,10 @@ declare module '@mui/material/styles/createPalette' {
       border: string;
       icon: string;
     };
+    chipGroup: {
+      background: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -125,6 +133,7 @@ declare module '@mui/material/styles/createTypography' {
   interface Typography {
     global: TypographyStyle & GlobalFontStyle;
     chip: TypographyStyle;
+    chipGroup: TypographyStyle;
     tooltip: TypographyStyle;
     textfield: TypographyStyle;
     select: TypographyStyle;
@@ -132,6 +141,7 @@ declare module '@mui/material/styles/createTypography' {
   interface TypographyOptions {
     global?: TypographyStyleOptions & GlobalFontStyle;
     chip?: TypographyStyle;
+    chipGroup?: TypographyStyle;
     tooltip?: TypographyStyleOptions;
     textfield?: TypographyStyleOptions;
     select?: TypographyStyleOptions;
@@ -161,8 +171,27 @@ export interface Space {
     spacer4xl: string;
   };
   chip: {
-    paddingX: string;
-    paddingY: string;
+    paddingTop: string;
+    paddingRight: string;
+    paddingBottom: string;
+    paddingLeft: string;
+    buttonMarginTop: string;
+    buttonMarginRight: string;
+    buttonMarginBottom: string;
+    buttonMarginLeft: string;
+  };
+  chipGroup: {
+    paddingTop: string;
+    paddingRight: string;
+    paddingBottom: string;
+    paddingLeft: string;
+    labelMarginRight: string;
+    listMarginRight: string;
+    listMarginBottom: string;
+    listItemMarginRight: string;
+    listItemMarginBottom: string;
+    closeMarginTop: string;
+    closeMarginBottom: string;
   };
   tooltip: {
     contentPaddingTop: string;
