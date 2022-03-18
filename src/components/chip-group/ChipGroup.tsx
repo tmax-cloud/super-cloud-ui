@@ -89,7 +89,7 @@ const ChipGroup = (props: ChipGroupProps) => {
     <>
       {items.length === 0 ? null : (
         <ThemeWrapper>
-          <StyledChipGroup>
+          <StyledChipGroup role="group">
             <StyledChipGroupMain>
               {categoryName && (
                 <Tooltip content={showTooltip && categoryName}>
@@ -133,7 +133,7 @@ export interface ChipGroupBaseProps {
    */
   categoryName?: string;
   /**
-   * Content rendered inside the chip group. Should be <Chip> elements.
+   * Content rendered inside the chip group.
    */
   children?: React.ReactNode;
 }
