@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Menu, MenuItem, Button } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import DeleteResourceDialog from '../dialog/DeleteResourceDialog';
-import { ServiceModel } from '../../models';
 import Dialog, { DialogSize } from '../dialog';
 import { K8sKind } from '../../types';
 
