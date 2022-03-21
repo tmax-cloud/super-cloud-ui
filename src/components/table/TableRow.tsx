@@ -5,12 +5,13 @@ import { TableItemProps } from './Table';
 import Kebab from '../kebab/Kebab';
 import StatusBox from './StatusBox';
 import { getTableValue } from './utils/tableDataOperatorUtils';
+import { K8sKind } from '../../types';
 
 const kebabCellStyle = css`
   width: 90px;
 `;
 
-export const TableRow = (tableItems: any, columnDataList: TableItemProps[]) =>
+export const TableRow = (tableItems: any, columnDataList: TableItemProps[], kindObj: K8sKind) =>
   tableItems.map((item: any, rowIdx: number) => (
     <MuiTableRow key={item.metadata.uid}>
       {columnDataList.map((currentColumnItem: TableItemProps, columnIdx: number) => {
@@ -18,7 +19,7 @@ export const TableRow = (tableItems: any, columnDataList: TableItemProps[]) =>
         const kebabItems = currentColumnItem.customKebabItems ? [...currentColumnItem.customKebabItems] : [];
         return (
           <TableCell css={isKebab && kebabCellStyle} data-testid={`${rowIdx}_${columnIdx}_cell`}>
-            {isKebab ? <Kebab kebabItems={kebabItems} /> : getTableValue(item, currentColumnItem)}
+            {isKebab ? <Kebab kebabItems={kebabItems} kindObj={kindObj} /> : getTableValue(item, currentColumnItem)}
           </TableCell>
         );
       })}
