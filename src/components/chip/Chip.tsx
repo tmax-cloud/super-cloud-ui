@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Chip as MuiChip, styled, SvgIcon, SxProps, Theme } from '@mui/material';
+import { useTooltip } from '../../hooks/use-tooltip';
 import ThemeWrapper from '../../themes/ThemeWrapper';
 import Tooltip from '../tooltip/Tooltip';
 
@@ -33,15 +34,7 @@ const ChipDeleteIcon = (
 
 const Chip = (props: ChipProps) => {
   const { label, ...rest } = props;
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [showTooltip, setShowTooltip] = React.useState(false);
-
-  React.useEffect(() => {
-    if (ref.current) {
-      const span = ref.current.firstElementChild as HTMLDivElement;
-      setShowTooltip(span.offsetWidth < span.scrollWidth);
-    }
-  }, [ref]);
+  const { ref, showTooltip } = useTooltip<HTMLDivElement>('firstElementChild');
 
   return (
     <ThemeWrapper>

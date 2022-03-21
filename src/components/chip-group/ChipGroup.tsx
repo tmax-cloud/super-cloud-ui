@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Box, IconButton, ListItem, styled, SvgIcon, Typography } from '@mui/material';
+import { useTooltip } from '../../hooks/use-tooltip';
 import ThemeWrapper from '../../themes/ThemeWrapper';
 import Tooltip from '../tooltip/Tooltip';
 
@@ -74,16 +75,8 @@ const ChipGroupCloseButton = (props: ChipGroupCloseButtonProps) => {
 
 const ChipGroup = (props: ChipGroupProps) => {
   const { categoryName, children, onDeleteAll } = props;
+  const { ref, showTooltip } = useTooltip<HTMLParagraphElement>();
   const items = React.Children.toArray(children);
-  const ref = React.useRef<HTMLDivElement>(null);
-  const [showTooltip, setShowTooltip] = React.useState(false);
-
-  React.useEffect(() => {
-    if (ref.current) {
-      const p = ref.current as HTMLParagraphElement;
-      setShowTooltip(p.offsetWidth < p.scrollWidth);
-    }
-  }, [ref]);
 
   return (
     <>
