@@ -25,7 +25,7 @@ function Table(props: TableProps) {
       {isLoaded && (
         <MuiTable aria-label="simple table">
           <TableHead columnDataList={columnDataList} order={order} orderBy={orderBy} onRequestSort={handleRequestSort} />
-          <TableBody items={data?.items} columnDataList={columnDataList} errorMsg={errorMsg as string} order={order} orderBy={orderBy} />
+          <TableBody kindObj={kindObj} items={data?.items} columnDataList={columnDataList} errorMsg={errorMsg as string} order={order} orderBy={orderBy} />
         </MuiTable>
       )}
     </>
