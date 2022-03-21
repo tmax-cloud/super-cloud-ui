@@ -47,6 +47,7 @@ export default function DeleteResourceDialog(props: DeleteResourceDialogProps) {
   const onDeleteClick = async () => {
     try {
       await handleRequest(kindObj, RequestType.DELETE);
+      onClose();
     } catch (e: any) {
       setError(e.message);
     }

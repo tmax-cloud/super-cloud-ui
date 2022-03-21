@@ -18,7 +18,7 @@ export const TableRow = (tableItems: any, columnDataList: TableItemProps[], kind
         const isKebab = currentColumnItem.name === 'kebab';
         const kebabItems = currentColumnItem.customKebabItems ? [...currentColumnItem.customKebabItems] : [];
         return (
-          <TableCell css={isKebab && kebabCellStyle} data-testid={`${rowIdx}_${columnIdx}_cell`}>
+          <TableCell css={isKebab && kebabCellStyle} data-testid={`${rowIdx}_${columnIdx}_cell`} key={`${item.metadata.uid}-${columnIdx}`}>
             {isKebab ? <Kebab kebabItems={kebabItems} kindObj={kindObj} /> : getTableValue(item, currentColumnItem)}
           </TableCell>
         );
