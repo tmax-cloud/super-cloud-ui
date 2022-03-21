@@ -50,17 +50,17 @@ function ListViewContent(props: ListViewContentProps) {
           </div>
         </div>
       ))}
-      <IconButton>
-        <AddIcon
-          onClick={() => {
-            setContents((currentContents): ListItemType[] => {
-              if (currentContents.findIndex((content) => content.key === '' && content.value === '') < 0) {
-                return [...currentContents, { key: '', value: '' }];
-              }
-              return currentContents;
-            });
-          }}
-        />
+      <IconButton
+        onClick={() => {
+          setContents((currentContents): ListItemType[] => {
+            if (currentContents.findIndex((content) => content.key === '' && content.value === '') < 0) {
+              return [...currentContents, { key: '', value: '' }];
+            }
+            return currentContents;
+          });
+        }}
+      >
+        <AddIcon />
       </IconButton>
     </>
   );

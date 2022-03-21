@@ -16,8 +16,10 @@ function ListViewHeader(props: ListViewHeaderProps) {
   return (
     <>
       <header css={headerStyle}>
-        {headerList.map((head) => (
-          <div css={headCellStyle}>{head}</div>
+        {headerList.map((head, idx) => (
+          <div key={`${head}_idx`} css={headCellStyle}>
+            {head}
+          </div>
         ))}
       </header>
     </>
