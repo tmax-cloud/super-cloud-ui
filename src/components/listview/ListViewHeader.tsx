@@ -7,7 +7,8 @@ const headerStyle = css`
 `;
 
 const headCellStyle = css`
-  width: calc(100% / 2);
+  width: calc((100% - 40px) / 2);
+  padding-right: 15px;
 `;
 
 function ListViewHeader(props: ListViewHeaderProps) {

@@ -6,11 +6,10 @@ import ListViewContent from './ListViewContent';
 
 const ListViewStyle = css`
   width: 100%;
-  margin: 15px;
 `;
 
 function Listview(props: ListviewProps) {
-  const { contents, headerList } = props;
+  const { contents = [], headerList } = props;
 
   return (
     <div css={ListViewStyle}>
@@ -21,7 +20,7 @@ function Listview(props: ListviewProps) {
 }
 
 interface ListviewProps {
-  contents: ListItemType[];
+  contents?: ListItemType[];
   headerList: string[];
 }
 

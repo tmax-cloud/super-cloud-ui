@@ -19,8 +19,8 @@ const contentCellStyle = css`
 `;
 
 const buttonWrapperStyle = css`
-  position: absolute;
-  right: -25px;
+  position: relative;
+  right: 0px;
 `;
 
 function ListViewContent(props: ListViewContentProps) {
