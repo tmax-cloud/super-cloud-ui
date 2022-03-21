@@ -15,7 +15,7 @@ describe('Chip', () => {
   });
   it('renders delete icon correctly', () => {
     const { container } = render(<Chip label="Deletable Chip" onDelete={() => {}} />);
-    const button = container.querySelector('button');
-    expect(button).toHaveClass('Chip-deleteIcon');
+    const icon = container.querySelector('svg');
+    expect(icon).toHaveClass('Chip-deleteIcon');
   });
 });
