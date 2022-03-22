@@ -3,34 +3,77 @@ import { Button as MuiButton, styled, SxProps, Theme } from '@mui/material';
 import { CommonProps } from '@mui/material/OverridableComponent';
 import ThemeWrapper from '../../themes/ThemeWrapper';
 
-const StyledButton = styled(MuiButton)(({ theme }) => ({
+export enum ButtonType {
+  primary = 'primary',
+  link = 'link',
+}
+
+const StyledPrimaryButton = styled(MuiButton)(({ theme }) => ({
   textTransform: 'none',
-  backgroundColor: theme.palette.button.primaryBg,
+  backgroundColor: theme.palette.button.primaryBackground,
   '&:hover': {
-    backgroundColor: theme.palette.button.primaryHoverBg,
+    backgroundColor: theme.palette.button.primaryHoverBackground,
   },
   '&.Mui-disabled': {
     color: theme.palette.button.disabled,
-    backgroundColor: theme.palette.button.disabledBg,
+    backgroundColor: theme.palette.button.disabledBackground,
     cursor: 'no-drop',
     pointerEvents: 'auto',
   },
 }));
 
-const Button = (props: ButtonProps) => {
+const StyledLinkButton = styled(MuiButton)(({ theme }) => ({
+  textTransform: 'none',
+  textDecoration: 'none',
+  color: theme.palette.button.link,
+  backgroundColor: theme.palette.button.linkBackground,
+  '&:hover': {
+    textDecoration: 'underline',
+    color: theme.palette.button.linkHover,
+    backgroundColor: theme.palette.button.linkBackground,
+  },
+  '&.Mui-disabled': {
+    color: theme.palette.button.disabled,
+    backgroundColor: theme.palette.button.linkDisabledBackground,
+  },
+}));
+
+const PrimaryButton = (props: ButtomCommonProps) => {
   const { children, ...rest } = props;
   return (
-    <ThemeWrapper>
-      <StyledButton variant="contained" {...rest}>
-        {children}
-      </StyledButton>
-    </ThemeWrapper>
+    <StyledPrimaryButton variant="contained" {...rest}>
+      {children}
+    </StyledPrimaryButton>
   );
 };
 
-export default Button;
+const LinkButton = (props: ButtomCommonProps) => {
+  const { children, ...rest } = props;
+  return (
+    <StyledLinkButton variant="text" {...rest}>
+      {children}
+    </StyledLinkButton>
+  );
+};
 
-export interface BaseProps {
+const Button = (props: ButtonProps) => {
+  const { type, ...rest } = props;
+  let StyledButton;
+  switch (type) {
+    case ButtonType.primary:
+      StyledButton = <PrimaryButton {...rest} />;
+      break;
+    case ButtonType.link:
+      StyledButton = <LinkButton {...rest} />;
+      break;
+    default:
+      StyledButton = <PrimaryButton {...rest} />;
+      break;
+  }
+  return <ThemeWrapper>{StyledButton}</ThemeWrapper>;
+};
+
+export interface ButtonBaseProps {
   /**
    * The content of the component.
    */
@@ -51,8 +94,16 @@ export interface BaseProps {
   sx?: SxProps<Theme>;
 }
 
-export type ButtonProps = BaseProps & CommonProps & React.DOMAttributes<HTMLButtonElement>;
+export interface ButtonTypeProps {
+  /**
+   * Adds button variant styles.
+   * @default 'primary'
+   */
+  type?: 'primary' | 'link';
+}
 
-Button.defaultProps = {
-  disabled: false,
-};
+export type ButtomCommonProps = ButtonBaseProps & CommonProps & React.DOMAttributes<HTMLButtonElement>;
+
+export type ButtonProps = ButtomCommonProps & ButtonTypeProps;
+
+export default Button;

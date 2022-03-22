@@ -17,11 +17,15 @@ declare module '@mui/material/styles/createPalette' {
       danger100: string;
     };
     button: {
-      primaryBg: string;
-      primaryHoverBg: string;
+      primaryBackground: string;
+      primaryHoverBackground: string;
       disabled: string;
-      disabledBg: string;
-      dangerBg: string;
+      disabledBackground: string;
+      dangerBackground: string;
+      link: string;
+      linkBackground: string;
+      linkHover: string;
+      linkDisabledBackground: string;
     };
     chart: {
       blue100: string;
@@ -65,11 +69,15 @@ declare module '@mui/material/styles/createPalette' {
       danger100: string;
     };
     button: {
-      primaryBg: string;
-      primaryHoverBg: string;
+      primaryBackground: string;
+      primaryHoverBackground: string;
       disabled: string;
-      disabledBg: string;
-      dangerBg: string;
+      disabledBackground: string;
+      dangerBackground: string;
+      link: string;
+      linkBackground: string;
+      linkHover: string;
+      linkDisabledBackground: string;
     };
     chart: {
       blue100: string;
