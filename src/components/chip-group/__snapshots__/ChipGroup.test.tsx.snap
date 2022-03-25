@@ -1,0 +1,161 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Chip chip group with category 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-2ps56d"
+    role="group"
+  >
+    <div
+      class="MuiBox-root css-79yqfn"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-2zmal-MuiTypography-root"
+      >
+        category
+      </p>
+      <ul
+        class="MuiBox-root css-14zi1m1"
+      >
+        <li
+          class="MuiListItem-root css-1o8m0dh-MuiListItem-root"
+        >
+          <div
+            class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1qfz615-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Chip 1
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chip chip group with category and tooltip 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-2ps56d"
+    role="group"
+  >
+    <div
+      class="MuiBox-root css-79yqfn"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-2zmal-MuiTypography-root"
+      >
+        A very long category name
+      </p>
+      <ul
+        class="MuiBox-root css-14zi1m1"
+      >
+        <li
+          class="MuiListItem-root css-1o8m0dh-MuiListItem-root"
+        >
+          <div
+            class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1qfz615-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Chip 1
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chip chip group with deletable category 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-2ps56d"
+    role="group"
+  >
+    <div
+      class="MuiBox-root css-79yqfn"
+    >
+      <p
+        class="MuiTypography-root MuiTypography-body1 MuiTypography-noWrap css-2zmal-MuiTypography-root"
+      >
+        category
+      </p>
+      <ul
+        class="MuiBox-root css-14zi1m1"
+      >
+        <li
+          class="MuiListItem-root css-1o8m0dh-MuiListItem-root"
+        >
+          <div
+            class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1qfz615-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Chip 1
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="MuiBox-root css-1b5ye64"
+    >
+      <button
+        class="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium css-cr3bmk-MuiButtonBase-root-MuiIconButton-root"
+        tabindex="0"
+        type="button"
+      >
+        <svg
+          aria-hidden="true"
+          class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium css-1dblj6t-MuiSvgIcon-root"
+          focusable="false"
+          viewBox="0 0 352 512"
+        >
+          <path
+            d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+            transform=""
+          />
+        </svg>
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Chip renders correctly 1`] = `
+<div>
+  <div
+    class="MuiBox-root css-2ps56d"
+    role="group"
+  >
+    <div
+      class="MuiBox-root css-79yqfn"
+    >
+      <ul
+        class="MuiBox-root css-14zi1m1"
+      >
+        <li
+          class="MuiListItem-root css-1o8m0dh-MuiListItem-root"
+        >
+          <div
+            class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1qfz615-MuiChip-root"
+          >
+            <span
+              class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"
+            >
+              Chip 1
+            </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+`;

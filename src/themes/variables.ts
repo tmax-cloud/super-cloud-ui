@@ -21,6 +21,16 @@ export const colors = {
     black400: '#8a8d90',
     black500: '#737679',
   },
+  chip: {
+    text: '#151515',
+    background: '#fff',
+    border: '#151515',
+    icon: '#737679',
+  },
+  chipGroup: {
+    background: '#f0f0f0',
+    icon: '#6a6e73',
+  },
   tooltip: {
     content: '#fff',
     contentBg: '#151515',
@@ -60,6 +70,12 @@ export const typography = {
     fontSize3xl: '1.75rem',
     fontSize4xl: '2.25rem',
   },
+  chip: {
+    fontSize: '0.75rem',
+  },
+  chipGroup: {
+    fontSize: '0.875rem',
+  },
   tooltip: {
     fontSize: '0.875rem',
   },
@@ -81,6 +97,29 @@ export const spaces = {
     spacer2xl: '3rem',
     spacer3xl: '4rem',
     spacer4xl: '5rem',
+  },
+  chip: {
+    paddingTop: '0.25rem',
+    paddingRight: '0.5rem',
+    paddingBottom: '0.25rem',
+    paddingLeft: '0.5rem',
+    buttonMarginTop: '0.25rem',
+    buttonMarginRight: '0.5rem',
+    buttonMarginBottom: '0.25rem',
+    buttonMarginLeft: '0.5rem',
+  },
+  chipGroup: {
+    paddingTop: '0.5rem',
+    paddingRight: '0.5rem',
+    paddingBottom: '0.5rem',
+    paddingLeft: '0.5rem',
+    labelMarginRight: '0.5rem',
+    listMarginRight: 'calc(0.25rem * -1)',
+    listMarginBottom: 'calc(0.25rem * -1)',
+    listItemMarginRight: '0.25rem',
+    listItemMarginBottom: '0.25rem',
+    closeMarginTop: 'calc(0.25rem * -1)',
+    closeMarginBottom: 'calc(0.25rem * -1)',
   },
   tooltip: {
     contentPaddingTop: '1rem',
