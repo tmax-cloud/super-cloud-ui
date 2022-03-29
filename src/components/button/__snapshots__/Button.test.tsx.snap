@@ -1,13 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button renders correctly 1`] = `
+exports[`Button disabled button 1`] = `
+<div>
+  <button
+    class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root Mui-disabled css-7ifs1y-MuiButtonBase-root-MuiButton-root"
+    disabled=""
+    tabindex="-1"
+    type="button"
+  >
+    Disabled Button
+  </button>
+</div>
+`;
+
+exports[`Button link button 1`] = `
+<div>
+  <button
+    class="MuiButton-root MuiButton-text MuiButton-textPrimary MuiButton-sizeMedium MuiButton-textSizeMedium MuiButtonBase-root css-1m2xrox-MuiButtonBase-root-MuiButton-root"
+    tabindex="0"
+    type="button"
+  >
+    link
+     Button
+    <span
+      class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
+    />
+  </button>
+</div>
+`;
+
+exports[`Button primary button 1`] = `
 <div>
   <button
     class="MuiButton-root MuiButton-contained MuiButton-containedPrimary MuiButton-sizeMedium MuiButton-containedSizeMedium MuiButtonBase-root css-7ifs1y-MuiButtonBase-root-MuiButton-root"
     tabindex="0"
     type="button"
   >
-    Button
+    primary
+     Button
     <span
       class="MuiTouchRipple-root css-8je8zh-MuiTouchRipple-root"
     />

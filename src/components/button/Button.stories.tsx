@@ -23,3 +23,16 @@ export const Disabled: ComponentStory<typeof Button> = (props) => {
 Disabled.args = {
   disabled: true,
 };
+
+export const Link: ComponentStory<typeof Button> = (props) => {
+  const { type, ...rest } = props;
+  return (
+    <Button type={type} {...rest}>
+      Button
+    </Button>
+  );
+};
+
+Link.args = {
+  type: 'link',
+};
