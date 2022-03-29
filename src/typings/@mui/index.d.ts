@@ -34,6 +34,16 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
+    chipGroup: {
+      background: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -86,6 +96,16 @@ declare module '@mui/material/styles/createPalette' {
       black400: string;
       black500: string;
     };
+    chip: {
+      text: string;
+      background: string;
+      border: string;
+      icon: string;
+    };
+    chipGroup: {
+      background: string;
+      icon: string;
+    };
     tooltip: {
       content: string;
       contentBg: string;
@@ -120,12 +140,16 @@ declare module '@mui/material/styles/createTypography' {
 
   interface Typography {
     global: TypographyStyle & GlobalFontStyle;
+    chip: TypographyStyle;
+    chipGroup: TypographyStyle;
     tooltip: TypographyStyle;
     textfield: TypographyStyle;
     select: TypographyStyle;
   }
   interface TypographyOptions {
     global?: TypographyStyleOptions & GlobalFontStyle;
+    chip?: TypographyStyle;
+    chipGroup?: TypographyStyle;
     tooltip?: TypographyStyleOptions;
     textfield?: TypographyStyleOptions;
     select?: TypographyStyleOptions;
@@ -153,6 +177,29 @@ export interface Space {
     spacer2xl: string;
     spacer3xl: string;
     spacer4xl: string;
+  };
+  chip: {
+    paddingTop: string;
+    paddingRight: string;
+    paddingBottom: string;
+    paddingLeft: string;
+    buttonMarginTop: string;
+    buttonMarginRight: string;
+    buttonMarginBottom: string;
+    buttonMarginLeft: string;
+  };
+  chipGroup: {
+    paddingTop: string;
+    paddingRight: string;
+    paddingBottom: string;
+    paddingLeft: string;
+    labelMarginRight: string;
+    listMarginRight: string;
+    listMarginBottom: string;
+    listItemMarginRight: string;
+    listItemMarginBottom: string;
+    closeMarginTop: string;
+    closeMarginBottom: string;
   };
   tooltip: {
     contentPaddingTop: string;

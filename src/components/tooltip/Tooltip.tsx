@@ -61,7 +61,7 @@ export interface BaseProps {
   /**
    * Tooltip content. Zero-length titles string are never displayed.
    */
-  content?: NonNullable<React.ReactNode>;
+  content?: React.ReactNode;
 }
 
 export type TooltipProps = BaseProps & React.HTMLAttributes<HTMLDivElement>;
