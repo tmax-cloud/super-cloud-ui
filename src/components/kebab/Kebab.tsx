@@ -1,21 +1,52 @@
 import * as React from 'react';
 import { Menu, MenuItem, Button } from '@mui/material';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import DeleteResourceDialog from '../dialog/DeleteResourceDialog';
+import AnnotationDialog from '../dialog/AnnotationDialog';
 import Dialog, { DialogSize } from '../dialog';
 import { K8sKind } from '../../types';
+import DeleteResourceDialog from '../dialog/DeleteResourceDialog';
+
+interface KebabItemProps {
+  label: string;
+  children: any;
+}
+
+type KebabFactoryProps = () => KebabItemProps;
+
+const kebabFactory: KebabFactoryProps[] = [
+  () => ({
+    label: 'Annotation',
+    children: AnnotationDialog,
+  }),
+  () => ({
+    label: 'Delete Resource',
+    children: DeleteResourceDialog,
+  }),
+];
 
 function Kebab(props: KebabProps) {
   const { kindObj } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [isDialogOpen, setDialogOpen] = React.useState(false);
   const open = Boolean(anchorEl);
+  const [isDialogOpen, setDialogOpen] = React.useState(false);
+  const [kebabList, setKebabList] = React.useState(kebabFactory);
+  const [kebabItem, selectKebabItem] = React.useState<any>(null);
+
+  React.useEffect(() => {
+    // custom한 kebab 추가하고 싶을 경우 setKebabList로 추가
+  }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const onMenuClick = (factoryItem: KebabFactoryProps) => () => {
+    selectKebabItem(() => factoryItem().children);
+    setDialogOpen(() => true);
   };
 
   return (
@@ -32,9 +63,13 @@ function Kebab(props: KebabProps) {
           'aria-labelledby': 'basic-button',
         }}
       >
-        <MenuItem onClick={() => setDialogOpen(true)}>Delete Resource</MenuItem>
+        {kebabList.map((item: any) => (
+          <MenuItem key={item().label} onClick={onMenuClick(item)}>
+            {item().label}
+          </MenuItem>
+        ))}
       </Menu>
-      <Dialog {...props} SubComponent={DeleteResourceDialog} subProps={{ resourceName: 'podName_01', namespaceName: 'namespaceName_01', kindObj }} isOpen={isDialogOpen} setDialogOpen={setDialogOpen} size={DialogSize.medium} />
+      <Dialog kindObj={kindObj} SubComponent={kebabItem} subProps={{ resourceName: 'podName_01', namespaceName: 'namespaceName_01', kindObj }} isOpen={isDialogOpen} setDialogOpen={setDialogOpen} size={DialogSize.medium} />
     </>
   );
 }

@@ -4,6 +4,7 @@ import { css } from '@emotion/react';
 import * as React from 'react';
 import { Button } from '@mui/material';
 import { default as MuiDialog } from '@mui/material/Dialog';
+import { K8sKind } from '../../types';
 
 export enum DialogSize {
   small = 'small',
@@ -27,6 +28,12 @@ export interface CommonDialogProps {
   SubComponent: any;
   subProps: any;
   size?: DialogSize;
+  kindObj: K8sKind;
+}
+
+export interface CommonDialogContentProps {
+  setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  kindObj: K8sKind;
 }
 
 export interface DialogProps extends CommonDialogProps {
@@ -60,11 +67,14 @@ export default function Dialog(props: DialogProps) {
   const onClose = () => {
     setDialogOpen(false);
   };
+  if (!SubComponent) {
+    return null;
+  }
 
   return (
     <div>
       <MuiDialog css={dialogSize[size as DialogSize]} open={isOpen} onClose={onClose}>
-        <SubComponent {...props} />
+        {<SubComponent {...props} />}
       </MuiDialog>
     </div>
   );
@@ -72,14 +82,14 @@ export default function Dialog(props: DialogProps) {
 
 // storybook이랑 tdd용
 export function DialogOpenButton(props: DialogOpenButtonProps) {
-  const { subProps, SubComponent } = props;
+  const { subProps, SubComponent, kindObj } = props;
   const [isOpen, setOpen] = React.useState(false);
   return (
     <>
       <Button variant="contained" onClick={() => setOpen(true)}>
         Open Dialog
       </Button>
-      <Dialog {...props} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
+      <Dialog kindObj={kindObj} {...props} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
     </>
   );
 }
