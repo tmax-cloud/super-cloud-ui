@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-import { CommonDialogContentProps } from './index';
+import { DialogContentProps } from './index';
 
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
@@ -20,7 +20,7 @@ export enum DialogSize {
   large = 'large',
 }
 
-export type DeleteResourceDialogProps = CommonDialogContentProps & { resourceName: string; namespaceName: string };
+export type DeleteResourceDialogProps = DialogContentProps;
 
 const alert = {
   error: css`

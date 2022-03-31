@@ -12,14 +12,7 @@ export enum DialogSize {
   large = 'large',
 }
 
-export enum ContentsType {
-  string = 'string',
-  textInput = 'textInput',
-  toggleButton = 'toggleButton',
-  numberSpinner = 'numberSpinner',
-  listView = 'listView',
-}
-export interface CommonDialogProps {
+export interface DialogProps {
   isOpen: boolean;
   setDialogOpen: React.Dispatch<React.SetStateAction<boolean>>;
   title?: string;
@@ -36,7 +29,7 @@ export interface CommonDialogContentProps {
   kindObj: K8sKind;
 }
 
-export interface DialogProps extends CommonDialogProps {
+export interface DialogContentProps extends CommonDialogContentProps {
   [key: string]: any;
 }
 
@@ -89,9 +82,19 @@ export function DialogOpenButton(props: DialogOpenButtonProps) {
       <Button variant="contained" onClick={() => setOpen(true)}>
         Open Dialog
       </Button>
-      <Dialog kindObj={kindObj} {...props} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
+      <Dialog {...props} kindObj={kindObj} SubComponent={SubComponent} subProps={subProps} isOpen={isOpen} setDialogOpen={setOpen} size={DialogSize.medium} />
     </>
   );
 }
 
-export type DialogOpenButtonProps = Omit<DialogProps, 'isOpen' | 'setOpen'>;
+export interface DialogOpenButtonProps {
+  [key: string]: any;
+  isOpen: boolean;
+  title?: string;
+  saveButtonText?: string;
+  cancelButtonText?: string;
+  SubComponent: any;
+  subProps: any;
+  size?: DialogSize;
+  kindObj: K8sKind;
+}

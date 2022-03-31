@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-import { CommonDialogContentProps } from './index';
+import { DialogContentProps } from './index';
 
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
@@ -13,13 +13,7 @@ import Alert from '@mui/material/Alert';
 import handleRequest from '../../apis/handleRequest';
 import { RequestType } from '../../types';
 
-export enum DialogSize {
-  small = 'small',
-  medium = 'medium',
-  large = 'large',
-}
-
-export type AnnotationDialogProps = CommonDialogContentProps;
+export type AnnotationDialogProps = DialogContentProps;
 
 const alert = {
   error: css`
