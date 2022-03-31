@@ -15,17 +15,13 @@ type KebabFactoryProps = () => KebabItemProps;
 
 const kebabFactory: KebabFactoryProps[] = [
   () => ({
-    label: 'Annotation',
-    children: AnnotationDialog,
-  }),
-  () => ({
     label: 'Delete Resource',
     children: DeleteResourceDialog,
   }),
 ];
 
 function Kebab(props: KebabProps) {
-  const { kindObj } = props;
+  const { kindObj, kebabItems } = props;
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   const [isDialogOpen, setDialogOpen] = React.useState(false);
@@ -34,6 +30,9 @@ function Kebab(props: KebabProps) {
 
   React.useEffect(() => {
     // custom한 kebab 추가하고 싶을 경우 setKebabList로 추가
+    if (kebabItems) {
+      setKebabList((defaultItems) => [...defaultItems, ...(kebabItems as KebabFactoryProps[])]);
+    }
   }, []);
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -77,6 +76,6 @@ function Kebab(props: KebabProps) {
 export default React.memo(Kebab);
 
 export interface KebabProps {
-  kebabItems?: any[];
+  kebabItems?: KebabFactoryProps[];
   kindObj: K8sKind;
 }
