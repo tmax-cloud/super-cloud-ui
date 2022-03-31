@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-import { CommonDialogProps } from './index';
+import { DialogContentProps } from './index';
 
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
@@ -11,15 +11,9 @@ import ListView from '../listview/Listview';
 import DialogTitle from '@mui/material/DialogTitle';
 import Alert from '@mui/material/Alert';
 import handleRequest from '../../apis/handleRequest';
-import { K8sKind, RequestType } from '../../types';
+import { RequestType } from '../../types';
 
-export enum DialogSize {
-  small = 'small',
-  medium = 'medium',
-  large = 'large',
-}
-
-export type AnnotationDialogProps = CommonDialogProps & { kindObj: K8sKind };
+export type AnnotationDialogProps = DialogContentProps;
 
 const alert = {
   error: css`

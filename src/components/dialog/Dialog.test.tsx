@@ -7,7 +7,7 @@ import DeleteResourceDialog from './DeleteResourceDialog';
 import { ServiceModel } from '../../models/index';
 
 function setup() {
-  return render(<DialogOpenButton SubComponent={DeleteResourceDialog} subProps={{ resourceName: 'podName_01', namespaceName: 'namespaceName_01', kindObj: { ServiceModel } }} size={DialogSize.medium} />);
+  return render(<DialogOpenButton isOpen={true} kindObj={ServiceModel} SubComponent={DeleteResourceDialog} subProps={{ resourceName: 'podName_01', namespaceName: 'namespaceName_01', kindObj: { ServiceModel } }} size={DialogSize.medium} />);
 }
 
 describe('삭제 다이알로그 테스트', () => {

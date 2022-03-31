@@ -1,6 +1,7 @@
 import * as _ from 'lodash-es';
 import { ComponentMeta, ComponentStory } from '@storybook/react';
 import { ServiceModel } from '../../models';
+import AnnotationDialog from '../dialog/AnnotationDialog';
 
 import Table from './Table';
 
@@ -39,7 +40,17 @@ Basic.args = {
       className: '',
       customValue: customValueSample,
     },
-    { name: 'kebab', displayTitle: '', className: '' },
+    {
+      name: 'kebab',
+      displayTitle: '',
+      customKebabItems: [
+        () => ({
+          label: 'Annotation',
+          children: AnnotationDialog,
+        }),
+      ],
+      className: '',
+    },
   ],
   kindObj: ServiceModel,
 };

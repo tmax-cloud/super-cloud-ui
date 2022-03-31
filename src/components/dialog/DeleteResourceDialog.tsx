@@ -2,7 +2,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
-import { CommonDialogProps } from './index';
+import { DialogContentProps } from './index';
 
 import Button from '@mui/material/Button';
 import DialogActions from '@mui/material/DialogActions';
@@ -12,7 +12,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import Alert from '@mui/material/Alert';
 import ReportProblemIcon from '@mui/icons-material/ReportProblem';
 import handleRequest from '../../apis/handleRequest';
-import { K8sKind, RequestType } from '../../types';
+import { RequestType } from '../../types';
 
 export enum DialogSize {
   small = 'small',
@@ -20,7 +20,7 @@ export enum DialogSize {
   large = 'large',
 }
 
-export type DeleteResourceDialogProps = CommonDialogProps & { kindObj: K8sKind; resourceName: string; namespaceName: string };
+export type DeleteResourceDialogProps = DialogContentProps;
 
 const alert = {
   error: css`

@@ -1,6 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import * as React from 'react';
+import * as _ from 'lodash-es';
 import TextField from '../textfield/TextField';
 import IconButton from '@mui/material/IconButton';
 import RemoveCircleIcon from '@mui/icons-material/RemoveCircle';
@@ -26,15 +27,24 @@ const buttonWrapperStyle = css`
 function ListViewContent(props: ListViewContentProps) {
   const { contents: defaultContents } = props;
   const [contents, setContents] = React.useState<ListItemType[]>([...defaultContents]);
+
+  const onChangeText = (type: keyof ListItemType, idx: number, e: React.ChangeEvent<HTMLInputElement>) => {
+    _.debounce(() => {
+      const newContents = [...contents];
+      newContents[idx][type] = e.target.value;
+      setContents(newContents);
+    }, 300)();
+  };
+
   return (
     <>
       {contents.map(({ key, value }, idx) => (
         <div css={contentStyle} key={`${key}_${value}`}>
           <div css={contentCellStyle}>
-            <TextField placeholder="key" defaultValue={key} />
+            <TextField placeholder="key" onChange={(e) => onChangeText('key', idx, e)} defaultValue={key} />
           </div>
           <div css={contentCellStyle}>
-            <TextField placeholder="value" defaultValue={value} />
+            <TextField placeholder="value" onChange={(e) => onChangeText('value', idx, e)} defaultValue={value} />
           </div>
           <div css={buttonWrapperStyle}>
             <IconButton

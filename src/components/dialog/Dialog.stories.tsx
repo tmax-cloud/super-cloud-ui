@@ -26,13 +26,11 @@ export const Delete: ComponentStory<typeof DialogOpenButton> = (props) => {
 };
 
 export const Annotation: ComponentStory<typeof DialogOpenButton> = (props) => {
-  const { isOpen, resourceName, namespaceName, kindObj, SubComponent } = props;
+  const { isOpen, kindObj, SubComponent } = props;
   return (
     <DialogOpenButton
       {...props}
       isOpen={isOpen}
-      resourceName={resourceName}
-      namespaceName={namespaceName}
       size={DialogSize.medium}
       kindObj={kindObj}
       SubComponent={SubComponent}
