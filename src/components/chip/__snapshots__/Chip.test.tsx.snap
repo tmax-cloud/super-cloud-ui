@@ -3,7 +3,7 @@
 exports[`Chip renders correctly 1`] = `
 <div>
   <div
-    class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1qfz615-MuiChip-root"
+    class="MuiChip-root MuiChip-outlined MuiChip-sizeMedium MuiChip-colorDefault MuiChip-outlinedDefault css-1tn234q-MuiChip-root"
   >
     <span
       class="MuiChip-label MuiChip-labelMedium css-6od3lo-MuiChip-label"

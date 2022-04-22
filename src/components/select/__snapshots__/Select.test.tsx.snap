@@ -6,7 +6,7 @@ exports[`Select renders correctly 1`] = `
     class="MuiFormControl-root css-1nrlq1o-MuiFormControl-root"
   >
     <div
-      class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-11jhjlt-MuiInputBase-root-MuiInput-root"
+      class="MuiInput-root MuiInput-underline MuiInputBase-root MuiInputBase-colorPrimary MuiInputBase-formControl css-r5hz0w-MuiInputBase-root-MuiInput-root-MuiSelect-root"
     >
       <div
         aria-expanded="false"
