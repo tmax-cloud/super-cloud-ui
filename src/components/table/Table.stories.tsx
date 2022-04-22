@@ -16,6 +16,12 @@ export default {
       description: `해당 페이지의 리소스 모델 정보`,
     },
   },
+  parameters: {
+    design: {
+      type: 'figma',
+      url: 'https://www.figma.com/file/f6Dn6VqHNNjZ2PVUywsWB2/01.%5BGUI%5DTmaxCloud_Portal_GUI_Guideline?node-id=0%3A1',
+    },
+  },
 } as ComponentMeta<typeof Table>;
 
 export const Basic: ComponentStory<typeof Table> = ({ columnDataList, kindObj, ...rest }) => (
